@@ -9,7 +9,7 @@ import './Hero.scss';
 
 const Hero = ({ language }) => {
   const socialLinks = [
-    { icon: <FaGithub />, url: 'https://github.com/Fuljoq', label: 'GitHub', type: 'link' },
+    { icon: <FaGithub />, url: 'https://github.com/Joaquin-Orlandau-Rosso', label: 'GitHub', type: 'link' },
     { icon: <FaLinkedin />, url: 'https://www.linkedin.com/in/joaquin-orlandau-rosso/', label: 'LinkedIn', type: 'link' },
     { icon: <FaEnvelope />, url: 'joaquin.orlandau.rosso@gmail.com', label: 'Email', type: 'email' },
   ];

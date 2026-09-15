@@ -90,7 +90,7 @@ const Contact = ({ language }) => {
                     <h4>{info.title}</h4>
                     {info.title === 'Email' && (
                       <div className="contact-actions">
-                        <span className="email-text">{info.value}</span>
+                        <a className="email-text" href={`mailto:${info.value}`}>{info.value}</a>
                         <button
                           type="button"
                           className="copy-btn"

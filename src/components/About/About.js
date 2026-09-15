@@ -14,24 +14,24 @@ const About = ({ language }) => {
 
   const stats = [
     {
-      number: 4,
-      label: language === 'es' ? 'Meses en Viupik' : 'Months at Viupik',
-      suffix: '',
+      number: 3,
+      label: language === 'es' ? 'Años programando' : 'Years coding',
+      suffix: '+',
     },
     {
       number: 3,
-      label: language === 'es' ? 'Proyectos Publicados' : 'Published Projects',
+      label: language === 'es' ? 'Proyectos en producción' : 'Live projects',
+      suffix: '+',
+    },
+    {
+      number: 8,
+      label: language === 'es' ? 'Tecnologías' : 'Technologies',
       suffix: '+',
     },
     {
       number: 2,
-      label: language === 'es' ? 'Carreras en Curso' : 'Active Degrees',
+      label: language === 'es' ? 'Formaciones en curso' : 'Programs in progress',
       suffix: '',
-    },
-    {
-      number: 7,
-      label: language === 'es' ? 'Tecnologías Principales' : 'Core Technologies',
-      suffix: '+',
     },
   ];
 

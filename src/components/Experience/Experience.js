@@ -30,6 +30,21 @@ const Experience = ({ language }) => {
       type: 'education',
       title:
         language === 'es'
+          ? 'Cursos de IA — Anthropic Academy'
+          : 'AI Courses — Anthropic Academy',
+      company: 'Anthropic',
+      period: language === 'es' ? '2026 - En curso' : '2026 - Present',
+      description:
+        language === 'es'
+          ? 'Formación en desarrollo con modelos de IA: uso de la API de Claude, ingeniería de prompts, integración de LLMs en aplicaciones y Model Context Protocol (MCP).'
+          : 'Training in development with AI models: Claude API usage, prompt engineering, integrating LLMs into applications, and Model Context Protocol (MCP).',
+      icon: <FaGraduationCap />,
+      skills: ['Claude API', 'Prompt Engineering', 'LLMs', 'MCP']
+    },
+    {
+      type: 'education',
+      title:
+        language === 'es'
           ? 'Carrera de Desarrollo Web'
           : 'Web Development Career',
       company: 'Coderhouse',

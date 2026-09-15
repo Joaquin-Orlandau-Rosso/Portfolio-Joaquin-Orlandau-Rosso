@@ -67,7 +67,7 @@ const Skills = ({ language }) => {
         >
           <h2 className="section-title">{language === 'es' ? 'Habilidades' : 'Skills'}</h2>
           <p className="section-subtitle">
-            {language === 'es' ? 'Tecnologías y herramientas que domino' : 'Technologies and tools I master'}
+            {language === 'es' ? 'Tecnologías y herramientas con las que trabajo' : 'Technologies and tools I work with'}
           </p>
         </motion.div>
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaExternalLinkAlt } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import { useInView } from 'react-intersection-observer';
 import './Projects.scss';
 
@@ -23,7 +23,7 @@ const Projects = ({ language }) => {
       image: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fportafolio-danel-nine.vercel.app%2F?w=1200&h=750',
       category: 'web',
       technologies: ['React', 'Vite', 'CSS', 'Responsive Design'],
-      github: 'https://github.com/Fuljoq/Portafolio-danel',
+      github: 'https://github.com/Joaquin-Orlandau-Rosso/Portafolio-danel',
       demo: 'https://portafolio-danel-nine.vercel.app/',
       featured: false,
     },
@@ -51,7 +51,7 @@ const Projects = ({ language }) => {
       image: 'https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmariaasastrocoach.vercel.app%2F?w=1200&h=750',
       category: 'web',
       technologies: ['React', 'Styled Components', 'Vercel'],
-      github: 'https://github.com/Fuljoq/MariaAstroCoach',
+      github: 'https://github.com/Joaquin-Orlandau-Rosso/MariaAstroCoach',
       demo: 'https://mariaasastrocoach.vercel.app/',
       featured: false,
     },
@@ -140,11 +140,23 @@ const Projects = ({ language }) => {
                     ))}
                   </div>
                   <div className="project-links">
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={language === 'es' ? 'Ver código en GitHub' : 'View code on GitHub'}
+                        title={language === 'es' ? 'Código' : 'Code'}
+                      >
+                        <FaGithub />
+                      </a>
+                    )}
                     <a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label="Live Demo"
+                      aria-label={language === 'es' ? 'Ver demo en vivo' : 'View live demo'}
+                      title="Demo"
                     >
                       <FaExternalLinkAlt />
                     </a>

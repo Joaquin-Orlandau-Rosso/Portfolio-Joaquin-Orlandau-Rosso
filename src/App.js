@@ -17,17 +17,32 @@ import ParticlesBackground from './components/ParticlesBackground/ParticlesBackg
 function App() {
   const [loading, setLoading] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
-  const [language, setLanguage] = useState('es');
+  const [language, setLanguage] = useState(() => localStorage.getItem('lang') || 'es');
 
   useEffect(() => {
-    setLoading(false);
+    const finishLoading = () => setLoading(false);
+    if (document.readyState === 'complete') {
+      finishLoading();
+    } else {
+      window.addEventListener('load', finishLoading);
+    }
+    const fallback = setTimeout(finishLoading, 1200);
 
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
       setDarkMode(true);
       document.body.classList.add('dark-mode');
     }
+
+    return () => {
+      window.removeEventListener('load', finishLoading);
+      clearTimeout(fallback);
+    };
   }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -41,7 +56,11 @@ function App() {
   };
 
   const toggleLanguage = () => {
-    setLanguage((prev) => (prev === 'es' ? 'en' : 'es'));
+    setLanguage((prev) => {
+      const next = prev === 'es' ? 'en' : 'es';
+      localStorage.setItem('lang', next);
+      return next;
+    });
   };
 
   if (loading) {
