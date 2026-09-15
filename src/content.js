@@ -52,7 +52,7 @@ const projects = {
 export const content = {
   es: {
     lang: 'es',
-    htmlTitle: 'Joaquín Orlandau Rosso — Desarrollador Full Stack',
+    htmlTitle: 'Joaquín Orlandau Rosso – Desarrollador Full Stack',
     nav: {
       work: 'Trabajo',
       experience: 'Experiencia',
@@ -65,22 +65,17 @@ export const content = {
       toggleTheme: { toDark: 'Cambiar a modo oscuro', toLight: 'Cambiar a modo claro' },
     },
     hero: {
-      eyebrow: 'Desarrollador full stack · Buenos Aires, AR',
-      title: ['Interfaces rápidas, ', 'accesibles', ' y sin ruido.'],
+      eyebrow: 'Buenos Aires, Argentina',
+      // TODO (Joaquín): reescribí título y párrafo con tus palabras; esto es un borrador simple
+      title: 'Desarrollador full stack.',
       lead:
-        'Trabajé cinco meses en Viupik, una empresa española de visualización 3D arquitectónica, tocando frontend y backend con React, Node.js y MongoDB. Hoy construyo productos propios con Supabase, Capacitor y Gemini, y busco un equipo donde seguir haciendo producto.',
+        'Soy Joaquín. Trabajé cinco meses en Viupik, una empresa española de visualización 3D, haciendo frontend y backend con React, Node.js y MongoDB. Ahora estoy armando mis propias apps con Supabase y Capacitor, y busco un equipo donde seguir aprendiendo.',
       cta: 'Hablemos',
       cv: 'Descargar CV',
       photoAlt: 'Joaquín Orlandau Rosso en su escritorio',
     },
-    facts: [
-      { label: 'Último puesto', value: 'Viupik · España', detail: 'Dic 2025 — Abr 2026 · Full stack' },
-      { label: 'Formación', value: 'UCES · Digital House', detail: 'Lic. en Programación · Full Stack' },
-      { label: 'Stack diario', value: 'React · Node · Supabase', detail: 'TypeScript y Next.js en camino' },
-    ],
     work: {
       eyebrow: 'Trabajo seleccionado',
-      note: 'Tres productos propios · tres sitios para clientes',
       kind: { own: 'Producto propio', tool: 'Herramienta propia', client: 'Cliente' },
       demo: 'Ver sitio',
       code: 'Código',
@@ -141,7 +136,6 @@ export const content = {
     },
     experience: {
       eyebrow: 'Experiencia',
-      note: 'Trayectoria profesional y académica',
       workTitle: 'Trabajo',
       educationTitle: 'Formación',
       present: 'Actualidad',
@@ -150,7 +144,7 @@ export const content = {
           role: 'Full Stack Developer',
           org: 'Viupik',
           place: 'España',
-          period: 'Dic 2025 — Abr 2026',
+          period: 'Dic 2025 – Abr 2026',
           description:
             'Desarrollo frontend y backend para una empresa especializada en visualización 3D arquitectónica en tiempo real y tours virtuales interactivos para proyectos inmobiliarios.',
           tech: ['React', 'JavaScript', 'Node.js', 'MongoDB', 'Git'],
@@ -160,35 +154,35 @@ export const content = {
         {
           title: 'Cursos de desarrollo con IA',
           org: 'Anthropic Academy',
-          period: '2026 — Actualidad',
+          period: '2026 – Actualidad',
           description: 'API de Claude, ingeniería de prompts, integración de LLMs en aplicaciones y Model Context Protocol (MCP).',
         },
         {
           title: 'Licenciatura en Programación',
           org: 'UCES',
-          period: '2024 — Actualidad',
+          period: '2024 – Actualidad',
           description: 'Fundamentos, algoritmos, bases de datos y desarrollo de software.',
         },
         {
           title: 'Carrera Full Stack',
           org: 'Digital House',
-          period: '2025 — 2026',
+          period: '2025 – 2026',
           description: 'Programa intensivo orientado a proyectos reales, buenas prácticas y trabajo colaborativo.',
         },
         {
           title: 'Desarrollo Web',
           org: 'Coderhouse',
-          period: '2023 — 2024',
+          period: '2023 – 2024',
           description: 'Frontend con HTML, CSS, JavaScript y React, con foco en proyectos prácticos.',
         },
       ],
     },
     about: {
       eyebrow: 'Sobre mí',
-      note: 'Cómo trabajo y con qué',
+      // TODO (Joaquín): reescribí estos dos párrafos con tus palabras
       paragraphs: [
-        'Me gusta el trabajo que se nota poco: interfaces que cargan rápido, se leen bien y no hacen ruido. Empecé por el frontend y hoy me muevo con la misma comodidad en el backend, sobre todo con Node.js y Supabase.',
-        'En Viupik trabajé en un equipo de producto real, con código en producción y usuarios que lo usaban. Desde entonces construyo herramientas propias para resolver problemas concretos, casi siempre integrando modelos de IA en el flujo.',
+        'Empecé por el frontend en Coderhouse y después seguí con la Licenciatura en Programación en UCES y la carrera Full Stack en Digital House. En Viupik trabajé por primera vez en un equipo con código en producción.',
+        'Fuera del trabajo hago apps para resolver cosas que necesito: un inventario de despensa, una ruleta para elegir a qué jugar, un programa que saca clips de streams. En varias uso la API de Gemini.',
       ],
       stackTitle: 'Stack',
       stack: [
@@ -206,8 +200,9 @@ export const content = {
       ],
     },
     contact: {
-      title: '¿Armamos algo juntos?',
-      lead: 'Escribime por mail o WhatsApp.',
+      // TODO (Joaquín): si querés, cambiá el título por algo tuyo
+      title: 'Contacto',
+      lead: 'Si querés hablar de un proyecto o de un puesto, escribime por mail o WhatsApp.',
       copy: 'Copiar email',
       copied: 'Copiado',
       whatsapp: 'WhatsApp',
@@ -220,7 +215,7 @@ export const content = {
 
   en: {
     lang: 'en',
-    htmlTitle: 'Joaquín Orlandau Rosso — Full Stack Developer',
+    htmlTitle: 'Joaquín Orlandau Rosso – Full Stack Developer',
     nav: {
       work: 'Work',
       experience: 'Experience',
@@ -233,22 +228,17 @@ export const content = {
       toggleTheme: { toDark: 'Switch to dark mode', toLight: 'Switch to light mode' },
     },
     hero: {
-      eyebrow: 'Full stack developer · Buenos Aires, AR',
-      title: ['Fast, ', 'accessible', ' interfaces. No noise.'],
+      eyebrow: 'Buenos Aires, Argentina',
+      // TODO (Joaquín): rewrite title and paragraph in your own words; this is a plain draft
+      title: 'Full stack developer.',
       lead:
-        'I spent five months at Viupik, a Spanish 3D architectural visualization company, working across the stack with React, Node.js and MongoDB. Today I build my own products with Supabase, Capacitor and Gemini, and I am looking for a team to keep building product with.',
+        'I am Joaquín. I worked five months at Viupik, a Spanish 3D visualization company, doing frontend and backend with React, Node.js and MongoDB. Now I am building my own apps with Supabase and Capacitor, and looking for a team to keep learning with.',
       cta: "Let's talk",
       cv: 'Download CV',
       photoAlt: 'Joaquín Orlandau Rosso at his desk',
     },
-    facts: [
-      { label: 'Latest role', value: 'Viupik · Spain', detail: 'Dec 2025 — Apr 2026 · Full stack' },
-      { label: 'Education', value: 'UCES · Digital House', detail: 'BSc in Programming · Full Stack' },
-      { label: 'Daily stack', value: 'React · Node · Supabase', detail: 'TypeScript and Next.js on the way' },
-    ],
     work: {
       eyebrow: 'Selected work',
-      note: 'Three own products · three client sites',
       kind: { own: 'Own product', tool: 'Own tool', client: 'Client' },
       demo: 'Visit site',
       code: 'Code',
@@ -309,7 +299,6 @@ export const content = {
     },
     experience: {
       eyebrow: 'Experience',
-      note: 'Professional and academic path',
       workTitle: 'Work',
       educationTitle: 'Education',
       present: 'Present',
@@ -318,7 +307,7 @@ export const content = {
           role: 'Full Stack Developer',
           org: 'Viupik',
           place: 'Spain',
-          period: 'Dec 2025 — Apr 2026',
+          period: 'Dec 2025 – Apr 2026',
           description:
             'Frontend and backend development for a company specialized in real-time 3D architectural visualization and interactive virtual tours for real estate projects.',
           tech: ['React', 'JavaScript', 'Node.js', 'MongoDB', 'Git'],
@@ -328,35 +317,35 @@ export const content = {
         {
           title: 'AI development courses',
           org: 'Anthropic Academy',
-          period: '2026 — Present',
+          period: '2026 – Present',
           description: 'Claude API, prompt engineering, integrating LLMs into applications and Model Context Protocol (MCP).',
         },
         {
           title: "Bachelor's Degree in Programming",
           org: 'UCES',
-          period: '2024 — Present',
+          period: '2024 – Present',
           description: 'Fundamentals, algorithms, databases and software development.',
         },
         {
           title: 'Full Stack Program',
           org: 'Digital House',
-          period: '2025 — 2026',
+          period: '2025 – 2026',
           description: 'Intensive program focused on real projects, best practices and collaborative work.',
         },
         {
           title: 'Web Development',
           org: 'Coderhouse',
-          period: '2023 — 2024',
+          period: '2023 – 2024',
           description: 'Frontend with HTML, CSS, JavaScript and React, focused on hands-on projects.',
         },
       ],
     },
     about: {
       eyebrow: 'About',
-      note: 'How I work and what with',
+      // TODO (Joaquín): rewrite these two paragraphs in your own words
       paragraphs: [
-        'I like work that goes unnoticed: interfaces that load fast, read well and make no noise. I started on the frontend and today I am just as comfortable on the backend, mostly with Node.js and Supabase.',
-        'At Viupik I worked on a real product team, with code in production and people using it. Since then I build my own tools to solve concrete problems, almost always with an AI model somewhere in the flow.',
+        'I started with frontend at Coderhouse and went on to a Programming degree at UCES and the Full Stack program at Digital House. Viupik was my first time working on a team with code in production.',
+        'Outside work I build apps for things I need: a pantry inventory, a roulette to pick what to play, a program that pulls clips from streams. Several of them use the Gemini API.',
       ],
       stackTitle: 'Stack',
       stack: [
@@ -374,8 +363,9 @@ export const content = {
       ],
     },
     contact: {
-      title: 'Shall we build something?',
-      lead: 'Reach me by email or WhatsApp.',
+      // TODO (Joaquín): change the title to your own if you like
+      title: 'Contact',
+      lead: 'If you want to talk about a project or a role, reach me by email or WhatsApp.',
       copy: 'Copy email',
       copied: 'Copied',
       whatsapp: 'WhatsApp',

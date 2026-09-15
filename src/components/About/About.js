@@ -10,7 +10,6 @@ const About = ({ t }) => {
       <div className="container">
         <div className="section-head">
           <h2 className="eyebrow">{t.about.eyebrow}</h2>
-          <span className="note">{t.about.note}</span>
         </div>
 
         <div ref={ref} className="about-grid reveal">

@@ -47,17 +47,7 @@
   }
 
   .navbar-available {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
     color: var(--ink);
-
-    .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--ok);
-    }
   }
 
   .navbar-actions {

@@ -41,10 +41,7 @@ const Navbar = ({ t, darkMode, toggleDarkMode, toggleLanguage }) => {
               {item.label}
             </a>
           ))}
-          <span className="navbar-available">
-            <span className="dot" aria-hidden="true" />
-            {t.nav.available}
-          </span>
+          <span className="navbar-available">{t.nav.available}</span>
         </nav>
 
         <div className="navbar-actions">

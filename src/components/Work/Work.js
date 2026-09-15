@@ -67,7 +67,6 @@ const Work = ({ t }) => (
     <div className="container">
       <div className="section-head">
         <h2 className="eyebrow">{t.work.eyebrow}</h2>
-        <span className="note">{t.work.note}</span>
       </div>
 
       <ol className="work-list">

@@ -32,7 +32,6 @@ const Experience = ({ t }) => (
     <div className="container">
       <div className="section-head">
         <h2 className="eyebrow">{t.experience.eyebrow}</h2>
-        <span className="note">{t.experience.note}</span>
       </div>
 
       <div className="exp-columns">

@@ -3,19 +3,13 @@ import { links } from '../../content';
 import './Hero.scss';
 
 const Hero = ({ t }) => {
-  const [before, word, after] = t.hero.title;
-
   return (
     <section id="top" className="hero">
       <div className="container">
         <div className="hero-grid">
           <div className="hero-text">
             <p className="hero-eyebrow">{t.hero.eyebrow}</p>
-            <h1 className="display hero-title">
-              {before}
-              <span className="highlight">{word}</span>
-              {after}
-            </h1>
+            <h1 className="display hero-title">{t.hero.title}</h1>
             <p className="hero-lead">{t.hero.lead}</p>
             <div className="hero-actions">
               <a href="#contacto" className="btn btn-primary">
@@ -33,20 +27,6 @@ const Hero = ({ t }) => {
             </div>
           </div>
         </div>
-
-        <div className="rule" />
-
-        <dl className="facts">
-          {t.facts.map((fact) => (
-            <div key={fact.label} className="fact">
-              <dt className="eyebrow">{fact.label}</dt>
-              <dd>
-                <span className="display fact-value">{fact.value}</span>
-                <span className="fact-detail">{fact.detail}</span>
-              </dd>
-            </div>
-          ))}
-        </dl>
       </div>
     </section>
   );
