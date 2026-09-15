@@ -1,130 +1,78 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { FaEnvelope, FaPhone, FaRegCopy } from 'react-icons/fa';
-import { toast } from 'react-toastify';
+import React, { useEffect, useState } from 'react';
+import { FiCopy, FiCheck, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import { links } from '../../content';
+import useReveal from '../../hooks/useReveal';
 import './Contact.scss';
 
-const Contact = ({ language }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+const Contact = ({ t }) => {
+  const ref = useReveal();
+  const [copied, setCopied] = useState(false);
 
-  const contactInfo = [
-    {
-      icon: <FaEnvelope />,
-      title: language === 'es' ? 'Email' : 'Email',
-      value: 'joaquin.orlandau.rosso@gmail.com',
-      link:  'joaquin.orlandau.rosso@gmail.com'
-    },
-    {
-      icon: <FaPhone />,
-      title: language === 'es' ? 'WhatsApp' : 'WhatsApp',
-      value: '+54 1134372005',
-      link: 'https://wa.me/541134372005'
-    }
-  ];
+  useEffect(() => {
+    if (!copied) return undefined;
+    const timer = setTimeout(() => setCopied(false), 2000);
+    return () => clearTimeout(timer);
+  }, [copied]);
 
-  const handleCopyEmail = async () => {
-    const email = 'joaquin.orlandau.rosso@gmail.com';
+  const copyEmail = async () => {
     try {
-      await navigator.clipboard.writeText(email);
-      toast.success('Email copiado al portapapeles');
-    } catch (error) {
-      toast.error('No se pudo copiar el email');
+      await navigator.clipboard.writeText(links.email);
+      setCopied(true);
+    } catch {
+      // Sin portapapeles (contexto inseguro o permiso denegado): el mailto sigue disponible
+      window.location.href = `mailto:${links.email}`;
     }
-  };
-
-  const handleOpenWhatsApp = () => {
-    window.open('https://wa.me/541134372005', '_blank');
   };
 
   return (
-    <section id="contact" className="contact section" ref={ref}>
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="section-title">
-            {language === 'es' ? 'Contacto' : 'Contact'}
-          </h2>
-          <p className="section-subtitle">
-            {language === 'es'
-              ? '¿Tienes un proyecto en mente? ¡Hablemos!'
-              : 'Do you have a project in mind? Let\'s talk!'}
-          </p>
-        </motion.div>
+    <section id="contacto" className="contact section">
+      <div ref={ref} className="container reveal">
+        <div className="contact-grid">
+          <div className="contact-text">
+            <h2 className="display contact-title">{t.contact.title}</h2>
+            <p className="contact-lead">{t.contact.lead}</p>
 
-        <div className="contact-container">
-          <motion.div
-            className="contact-info"
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h3>
-              {language === 'es' ? 'Información de Contacto' : 'Contact Information'}
-            </h3>
-            <p>
-              {language === 'es'
-                ? 'Estoy siempre abierto a discutir nuevos proyectos, ideas creativas o oportunidades para ser parte de tus visiones.'
-                : 'I am always open to discussing new projects, creative ideas, or opportunities to be part of your vision.'}
-            </p>
-
-            <div className="info-items">
-              {contactInfo.map((info, index) => (
-                <motion.div
-                  key={index}
-                  className="info-item"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+            <div className="contact-lines">
+              <div className="contact-line">
+                <a href={`mailto:${links.email}`} className="contact-email">
+                  {links.email}
+                </a>
+                <button
+                  type="button"
+                  className={`copy-btn ${copied ? 'is-copied' : ''}`}
+                  onClick={copyEmail}
+                  aria-label={t.contact.copy}
+                  title={t.contact.copy}
                 >
-                  <div className="info-icon">
-                    {info.icon}
-                  </div>
-                  <div className="info-content">
-                    <h4>{info.title}</h4>
-                    {info.title === 'Email' && (
-                      <div className="contact-actions">
-                        <a className="email-text" href={`mailto:${info.value}`}>{info.value}</a>
-                        <button
-                          type="button"
-                          className="copy-btn"
-                          onClick={handleCopyEmail}
-                          aria-label={language === 'es' ? 'Copiar email' : 'Copy email'}
-                          title={language === 'es' ? 'Copiar' : 'Copy'}
-                        >
-                          <FaRegCopy />
-                        </button>
-                      </div>
-                    )}
-                    {info.title === 'WhatsApp' && (
-                      <button
-                        type="button"
-                        className="btn btn-primary"
-                        onClick={handleOpenWhatsApp}
-                      >
-                        {info.value}
-                      </button>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="contact-decoration">
-              <div className="decoration-circle"></div>
-              <div className="decoration-dots">
-                <span></span>
-                <span></span>
-                <span></span>
+                  {copied ? <FiCheck aria-hidden="true" /> : <FiCopy aria-hidden="true" />}
+                  <span aria-live="polite">{copied ? t.contact.copied : t.contact.copy}</span>
+                </button>
+              </div>
+              <div className="contact-line">
+                <a href={links.whatsapp} target="_blank" rel="noopener noreferrer" className="contact-phone">
+                  {t.contact.whatsapp} · {links.phoneLabel}
+                </a>
               </div>
             </div>
-          </motion.div>
+          </div>
+
+          <ul className="contact-social">
+            <li>
+              <a href={links.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <FiGithub />
+              </a>
+            </li>
+            <li>
+              <a href={links.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <FiLinkedin />
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${links.email}`} aria-label="Email">
+                <FiMail />
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </section>

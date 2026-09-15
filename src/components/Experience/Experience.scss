@@ -1,162 +1,83 @@
 .experience {
-  .experience-timeline {
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem 0;
+  .exp-columns {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+    padding-top: 28px;
+  }
 
-    &::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 100%;
-      background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-      
-      @media (max-width: 768px) {
-        left: 30px;
-      }
+  .exp-group {
+    ul {
+      list-style: none;
+    }
+  }
+
+  .exp-group-title {
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .exp-entry {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    gap: 16px;
+    padding-block: 24px;
+    border-bottom: 1px solid var(--line);
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  .exp-period {
+    padding-top: 6px;
+    white-space: nowrap;
+  }
+
+  .exp-heading {
+    font-size: 26px;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+
+  .exp-org {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent-2);
+    margin-bottom: 10px;
+
+    .exp-place {
+      font-weight: 400;
+      color: var(--muted);
+    }
+  }
+
+  .exp-description {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--muted);
+    text-wrap: pretty;
+  }
+
+  .tech-list {
+    margin-top: 12px;
+  }
+
+  @media (max-width: 960px) {
+    .exp-columns {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .exp-entry {
+      grid-template-columns: 1fr;
+      gap: 8px;
     }
 
-    .experience-item {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 3rem;
-      position: relative;
-      width: 50%;
-
-      &:nth-child(even) {
-        margin-left: 50%;
-        flex-direction: row-reverse;
-
-        .experience-content {
-          text-align: left;
-          margin-right: 2rem;
-        }
-
-        .experience-icon {
-          left: -30px;
-        }
-      }
-
-      &:nth-child(odd) {
-        .experience-content {
-          text-align: right;
-          margin-left: 2rem;
-        }
-
-        .experience-icon {
-          right: -30px;
-        }
-      }
-
-      .experience-icon {
-        position: absolute;
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.5rem;
-        box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-
-        .dark-mode & {
-          box-shadow: 0 5px 20px rgba(102, 126, 234, 0.6);
-        }
-      }
-
-      .experience-content {
-        background: white;
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        flex: 1;
-
-        .dark-mode & {
-          background: #1a1f3a;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .experience-period {
-          display: inline-block;
-          padding: 5px 15px;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
-          border-radius: 20px;
-          font-size: 0.85rem;
-          font-weight: 600;
-          margin-bottom: 1rem;
-        }
-
-        h3 {
-          font-size: 1.4rem;
-          margin-bottom: 0.5rem;
-          color: #2d3748;
-
-          .dark-mode & {
-            color: #e2e8f0;
-          }
-        }
-
-        h4 {
-          font-size: 1.1rem;
-          color: #667eea;
-          margin-bottom: 1rem;
-        }
-
-        p {
-          font-size: 0.95rem;
-          line-height: 1.6;
-          margin-bottom: 1.5rem;
-          opacity: 0.8;
-        }
-
-        .experience-skills {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-          justify-content: flex-end;
-
-          &:nth-child(odd) {
-            justify-content: flex-start;
-          }
-
-          .skill-tag {
-            padding: 5px 12px;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 500;
-          }
-        }
-      }
-
-      @media (max-width: 768px) {
-        width: 100%;
-        padding-left: 80px;
-        margin-left: 0 !important;
-        flex-direction: row !important;
-
-        .experience-icon {
-          left: 0 !important;
-          right: auto !important;
-        }
-
-        .experience-content {
-          text-align: left !important;
-          margin-left: 0 !important;
-          margin-right: 0 !important;
-        }
-
-        .experience-skills {
-          justify-content: flex-start !important;
-        }
-      }
+    .exp-period {
+      padding-top: 0;
     }
   }
 }

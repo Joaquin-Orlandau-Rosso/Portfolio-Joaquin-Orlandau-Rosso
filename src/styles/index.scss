@@ -1,239 +1,261 @@
-// Variables
-$primary-color: #667eea;
-$secondary-color: #764ba2;
-$accent-color: #f093fb;
-$dark-bg: #0a0e27;
-$dark-bg-secondary: #151a3a;
-$light-bg: #ffffff;
-$light-bg-secondary: #f7f8fc;
-$text-dark: #2d3748;
-$text-light: #e2e8f0;
+// ---------------------------------------------------------------------------
+// Tokens — dirección "Editorial": crema, tinta cálida, terracota + petróleo.
+// Todo el color vive acá; los componentes solo consumen variables.
+// ---------------------------------------------------------------------------
+:root {
+  --bg: #faf7f1;
+  --bg-2: #f3eee4;
+  --ink: #16130e;
+  --ink-2: #464036;
+  --muted: #6b6357;
+  --muted-2: #857d70;
+  --line: #e0d8c9;
+  --line-strong: #16130e;
+  --accent: #b04a2b;
+  --accent-hover: #7e2f1b;
+  --on-accent: #faf7f1;
+  --accent-2: #0e6e7a;
+  --accent-2-soft: rgba(14, 110, 122, 0.22);
+  --ok: #2f7d4f;
+  --thumb-bg: #e9e2d5;
 
-// Mixins
-@mixin gradient-bg {
-  background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+  --font-body: 'IBM Plex Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+
+  --gutter: clamp(20px, 5vw, 72px);
+  --max: 1280px;
+
+  color-scheme: light;
 }
 
-@mixin glass-effect {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.dark {
+  --bg: #14110d;
+  --bg-2: #1c1813;
+  --ink: #f1ebe0;
+  --ink-2: #cfc5b4;
+  --muted: #a39a8c;
+  --muted-2: #7a7264;
+  --line: #2e2821;
+  --line-strong: #f1ebe0;
+  --accent: #d9694a;
+  --accent-hover: #e8876b;
+  --on-accent: #16130e;
+  --accent-2: #4fb3bf;
+  --accent-2-soft: rgba(79, 179, 191, 0.25);
+  --ok: #5fbf85;
+  --thumb-bg: #221d17;
+
+  color-scheme: dark;
 }
 
-@mixin hover-transform {
-  transition: all 0.3s ease;
-  &:hover {
-    transform: translateY(-5px);
-  }
-}
-
-// Global Styles
-* {
+// ---------------------------------------------------------------------------
+// Base
+// ---------------------------------------------------------------------------
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: $light-bg;
-  color: $text-dark;
+  transition: background-color 0.25s ease, color 0.25s ease;
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
-
-  &.dark-mode {
-    background: $dark-bg;
-    color: $text-light;
-  }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
+img {
+  display: block;
+  max-width: 100%;
 }
 
 a {
+  color: var(--accent);
   text-decoration: none;
-  color: inherit;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--accent-hover);
+  }
 }
 
 button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
   cursor: pointer;
-  border: none;
-  outline: none;
-  font-family: inherit;
 }
 
+:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--accent-2-soft);
+}
+
+// ---------------------------------------------------------------------------
+// Layout helpers
+// ---------------------------------------------------------------------------
 .container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: var(--max);
   margin: 0 auto;
-  padding: 0 20px;
+  padding-inline: var(--gutter);
 }
 
 .section {
-  padding: 80px 0;
-  position: relative;
-  
-  @media (max-width: 768px) {
-    padding: 60px 0;
-  }
+  padding-block: clamp(48px, 6vw, 80px);
 }
 
-.section-title {
-  font-size: 3rem;
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  
-  @media (max-width: 768px) {
-    font-size: 2rem;
-  }
+.rule {
+  height: 1px;
+  background: var(--line);
 }
 
-.section-subtitle {
-  font-size: 1.2rem;
-  text-align: center;
-  margin-bottom: 3rem;
-  opacity: 0.8;
-  
-  @media (max-width: 768px) {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
+// ---------------------------------------------------------------------------
+// Tipografía
+// ---------------------------------------------------------------------------
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1;
 }
 
-.btn {
-  padding: 12px 30px;
-  border-radius: 50px;
+.eyebrow {
+  font-size: 11px;
   font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+
+  &.accent {
+    color: var(--accent);
+  }
+
+  &.petrol {
+    color: var(--accent-2);
+  }
+}
+
+// Cabecera de sección: rótulo a la izquierda, nota a la derecha, línea gruesa arriba
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding-top: 14px;
+  margin-bottom: 8px;
+  border-top: 2px solid var(--accent);
+
+  .eyebrow {
+    color: var(--ink);
+  }
+
+  .note {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: right;
+  }
+}
+
+.highlight {
+  font-style: italic;
+  background: linear-gradient(transparent 64%, var(--accent-2-soft) 64%);
+}
+
+// ---------------------------------------------------------------------------
+// Botones
+// ---------------------------------------------------------------------------
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
   &.btn-primary {
-    @include gradient-bg;
-    color: white;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-    
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      color: var(--on-accent);
     }
   }
-  
+
   &.btn-outline {
-    border: 2px solid $primary-color;
-    color: $primary-color;
-    background: transparent;
-    
+    border-color: var(--accent-2);
+    color: var(--accent-2);
+
     &:hover {
-      background: $primary-color;
-      color: white;
+      background: var(--accent-2);
+      color: var(--bg);
     }
   }
 }
 
-// Loading animation
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
+// Etiqueta de tecnología: texto petróleo separado por puntos
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 0;
+  font-size: 13px;
+  color: var(--accent-2);
+
+  span + span::before {
+    content: '·';
+    margin-inline: 8px;
+    color: var(--muted-2);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Aparición al hacer scroll (sin librerías)
+// ---------------------------------------------------------------------------
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+
+  &.is-visible {
     opacity: 1;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.8;
+    transform: none;
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  to {
+
+  .reveal {
     opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-// Dark mode styles
-.dark-mode {
-  .section {
-    background: $dark-bg;
-  }
-  
-  .card {
-    background: $dark-bg-secondary;
-    border-color: rgba(255, 255, 255, 0.1);
-  }
-  
-  input, textarea {
-    background: $dark-bg-secondary;
-    color: $text-light;
-    border-color: rgba(255, 255, 255, 0.1);
-    
-    &::placeholder {
-      color: rgba(255, 255, 255, 0.5);
-    }
-  }
-}
-
-// Scrollbar styles
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: $light-bg-secondary;
-  
-  .dark-mode & {
-    background: $dark-bg-secondary;
-  }
-}
-
-::-webkit-scrollbar-thumb {
-  @include gradient-bg;
-  border-radius: 5px;
-  
-  &:hover {
-    background: $secondary-color;
+    transform: none;
+    transition: none;
   }
 }

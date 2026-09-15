@@ -1,6 +1,6 @@
 {
-  "short_name": "Joaquin OR",
-  "name": "Joaquin Orlandau Rosso | Full Stack Developer",
+  "short_name": "Joaquín O. R.",
+  "name": "Joaquín Orlandau Rosso — Desarrollador Full Stack",
   "icons": [
     {
       "src": "favicon.svg",
@@ -11,6 +11,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#667eea",
-  "background_color": "#0a0e27"
+  "theme_color": "#FAF7F1",
+  "background_color": "#FAF7F1"
 }

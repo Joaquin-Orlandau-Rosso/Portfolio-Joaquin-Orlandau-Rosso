@@ -1,97 +1,84 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
-import { FaBars, FaTimes, FaMoon, FaSun } from 'react-icons/fa';
+import React, { useEffect, useState } from 'react';
+import { FiMoon, FiSun } from 'react-icons/fi';
 import './Navbar.scss';
 
-const Navbar = ({ darkMode, toggleDarkMode, language, toggleLanguage }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Navbar = ({ t, darkMode, toggleDarkMode, toggleLanguage }) => {
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      if (scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  // Cerrar el menú móvil con Escape
+  useEffect(() => {
+    if (!open) return undefined;
+    const onKey = (e) => e.key === 'Escape' && setOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
 
-  const closeMenu = () => {
-    setIsOpen(false);
-  };
-
-  const navItems = [
-    { name: language === 'es' ? 'Inicio' : 'Home', to: 'hero' },
-    { name: language === 'es' ? 'Sobre Mí' : 'About', to: 'about' },
-    { name: language === 'es' ? 'Habilidades' : 'Skills', to: 'skills' },
-    { name: language === 'es' ? 'Experiencia' : 'Experience', to: 'experience' },
-    { name: language === 'es' ? 'Proyectos' : 'Projects', to: 'projects' },
-    { name: language === 'es' ? 'Contacto' : 'Contact', to: 'contact' },
+  const items = [
+    { label: t.nav.work, href: '#trabajo' },
+    { label: t.nav.experience, href: '#experiencia' },
+    { label: t.nav.about, href: '#sobre-mi' },
+    { label: t.nav.contact, href: '#contacto' },
   ];
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${darkMode ? 'dark' : ''}`}>
-      <div className="container">
-        <div className="navbar-content">
-          <div className="navbar-logo">
-            <Link to="hero" smooth={true} duration={500}>
-              <span className="logo-text">Portfolio</span>
-              <span className="logo-dot">.</span>
-            </Link>
-          </div>
+    <header className={`navbar ${scrolled ? 'is-scrolled' : ''} ${open ? 'is-open' : ''}`}>
+      <div className="container navbar-inner">
+        <a href="#top" className="navbar-name">
+          Joaquín Orlandau Rosso
+        </a>
 
-          <div className={`navbar-menu ${isOpen ? 'active' : ''}`}>
-            <ul className="navbar-list">
-              {navItems.map((item, index) => (
-                <li key={index} className="navbar-item">
-                  <Link
-                    to={item.to}
-                    smooth={true}
-                    duration={500}
-                    offset={-70}
-                    spy={true}
-                    activeClass="active"
-                    onClick={closeMenu}
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+        <nav className="navbar-links" aria-label="Principal">
+          {items.map((item) => (
+            <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
+              {item.label}
+            </a>
+          ))}
+          <span className="navbar-available">
+            <span className="dot" aria-hidden="true" />
+            {t.nav.available}
+          </span>
+        </nav>
 
-            <div className="navbar-actions desktop">
-              <button className="lang-toggle" onClick={toggleLanguage}>
-                <span>{language === 'es' ? 'ES' : 'EN'}</span>
-              </button>
-              <button className="theme-toggle" onClick={toggleDarkMode}>
-                {darkMode ? <FaSun /> : <FaMoon />}
-              </button>
-            </div>
-          </div>
-
-          <div className="navbar-mobile">
-            <button className="lang-toggle mobile" onClick={toggleLanguage}>
-              <span>{language === 'es' ? 'ES' : 'EN'}</span>
-            </button>
-            <button className="theme-toggle mobile" onClick={toggleDarkMode}>
-              {darkMode ? <FaSun /> : <FaMoon />}
-            </button>
-            <button className="menu-toggle" onClick={toggleMenu}>
-              {isOpen ? <FaTimes /> : <FaBars />}
-            </button>
-          </div>
+        <div className="navbar-actions">
+          <button type="button" className="navbar-lang" onClick={toggleLanguage} aria-label={t.nav.toggleLang}>
+            {t.lang === 'es' ? 'EN' : 'ES'}
+          </button>
+          <button
+            type="button"
+            className="navbar-theme"
+            onClick={toggleDarkMode}
+            aria-label={darkMode ? t.nav.toggleTheme.toLight : t.nav.toggleTheme.toDark}
+          >
+            {darkMode ? <FiSun /> : <FiMoon />}
+          </button>
+          <button
+            type="button"
+            className="navbar-menu"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+          >
+            {open ? t.nav.close : t.nav.menu}
+          </button>
         </div>
       </div>
-    </nav>
+
+      <nav id="mobile-nav" className="navbar-mobile" aria-label="Principal (móvil)" hidden={!open}>
+        {items.map((item) => (
+          <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    </header>
   );
 };
 
