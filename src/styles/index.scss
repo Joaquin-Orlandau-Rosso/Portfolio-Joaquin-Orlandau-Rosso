@@ -19,8 +19,9 @@
   --ok: #2f7d4f;
   --thumb-bg: #e9e2d5;
 
-  --font-body: 'IBM Plex Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-body: 'Hanken Grotesk', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-body);
+  --radius: 6px;
 
   --gutter: clamp(20px, 5vw, 72px);
   --max: 1280px;
@@ -133,16 +134,14 @@ button {
 // ---------------------------------------------------------------------------
 .display {
   font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: -0.015em;
-  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
 .eyebrow {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--muted);
 
   &.accent {
@@ -154,32 +153,32 @@ button {
   }
 }
 
-// Cabecera de sección: rótulo a la izquierda, nota a la derecha, línea gruesa arriba
+// Cabecera de sección: título a la izquierda, nota a la derecha, línea arriba
 .section-head {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 16px;
-  padding-top: 14px;
+  padding-top: 20px;
   margin-bottom: 8px;
-  border-top: 2px solid var(--accent);
+  border-top: 1px solid var(--line-strong);
 
   .eyebrow {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     color: var(--ink);
   }
 
   .note {
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    font-size: 13px;
     color: var(--muted);
     text-align: right;
   }
 }
 
 .highlight {
-  font-style: italic;
-  background: linear-gradient(transparent 64%, var(--accent-2-soft) 64%);
+  color: var(--accent);
 }
 
 // ---------------------------------------------------------------------------
@@ -194,6 +193,7 @@ button {
   font-weight: 500;
   line-height: 1;
   border: 1px solid transparent;
+  border-radius: var(--radius);
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 
   &.btn-primary {
@@ -225,7 +225,7 @@ button {
   flex-wrap: wrap;
   gap: 4px 0;
   font-size: 13px;
-  color: var(--accent-2);
+  color: var(--muted);
 
   span + span::before {
     content: '·';

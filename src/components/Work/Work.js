@@ -3,18 +3,12 @@ import { FiArrowUpRight, FiGithub } from 'react-icons/fi';
 import useReveal from '../../hooks/useReveal';
 import './Work.scss';
 
-const pad = (n) => String(n).padStart(2, '0');
-
-const WorkItem = ({ item, index, t }) => {
+const WorkItem = ({ item, t }) => {
   const ref = useReveal();
   const hasLinks = item.demo || item.code;
 
   return (
     <li ref={ref} className={`work-item reveal kind-${item.kind}`}>
-      <span className="work-index display" aria-hidden="true">
-        {pad(index + 1)}
-      </span>
-
       <a
         className="work-thumb"
         href={item.demo || undefined}
@@ -28,7 +22,7 @@ const WorkItem = ({ item, index, t }) => {
 
       <div className="work-body">
         <div className="work-meta">
-          <span className="eyebrow accent">{t.work.kind[item.kind]}</span>
+          <span className="eyebrow kind">{t.work.kind[item.kind]}</span>
           <span className="eyebrow">{item.platform}</span>
         </div>
         <h3 className="display work-title">
@@ -77,8 +71,8 @@ const Work = ({ t }) => (
       </div>
 
       <ol className="work-list">
-        {t.work.items.map((item, index) => (
-          <WorkItem key={item.title} item={item} index={index} t={t} />
+        {t.work.items.map((item) => (
+          <WorkItem key={item.title} item={item} t={t} />
         ))}
       </ol>
     </div>

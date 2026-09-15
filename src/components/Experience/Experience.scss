@@ -13,6 +13,9 @@
   }
 
   .exp-group-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
     padding-bottom: 12px;
     border-bottom: 1px solid var(--line);
   }
@@ -30,14 +33,15 @@
   }
 
   .exp-period {
-    padding-top: 6px;
+    padding-top: 3px;
+    font-size: 13px;
+    color: var(--muted);
     white-space: nowrap;
   }
 
   .exp-heading {
-    font-size: 26px;
-    line-height: 1.1;
-    margin-bottom: 4px;
+    font-size: 18px;
+    margin-bottom: 2px;
   }
 
   .exp-org {

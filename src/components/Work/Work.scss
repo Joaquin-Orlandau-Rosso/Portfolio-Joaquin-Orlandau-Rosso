@@ -5,8 +5,8 @@
 
   .work-item {
     display: grid;
-    grid-template-columns: 48px 240px minmax(0, 1fr) 200px;
-    gap: 28px;
+    grid-template-columns: 260px minmax(0, 1fr) 200px;
+    gap: 32px;
     align-items: start;
     padding-block: 32px;
     border-bottom: 1px solid var(--line);
@@ -16,17 +16,11 @@
     }
   }
 
-  .work-index {
-    font-size: 26px;
-    line-height: 1;
-    color: var(--accent);
-    padding-top: 6px;
-  }
-
   .work-thumb {
     display: block;
     aspect-ratio: 3 / 2;
     overflow: hidden;
+    border-radius: var(--radius);
     border: 1px solid var(--line);
     background: var(--thumb-bg);
 
@@ -44,20 +38,24 @@
 
   .work-meta {
     display: flex;
-    gap: 14px;
-    margin-bottom: 10px;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 13px;
+
+    .kind {
+      color: var(--accent);
+    }
 
     .eyebrow + .eyebrow::before {
       content: '·';
-      margin-right: 14px;
+      margin-right: 10px;
       color: var(--muted-2);
     }
   }
 
   .work-title {
-    font-size: 30px;
-    line-height: 1.05;
-    margin-bottom: 8px;
+    font-size: 22px;
+    margin-bottom: 6px;
 
     a {
       color: var(--ink);
@@ -86,15 +84,15 @@
   .work-aside {
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    padding-top: 6px;
+    gap: 16px;
+    padding-top: 2px;
   }
 
   .work-links {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
 
     a {
@@ -110,22 +108,18 @@
   }
 
   .work-private {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--muted-2);
   }
 
   @media (max-width: 1040px) {
     .work-item {
-      grid-template-columns: 40px minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr);
       grid-template-areas:
-        'index thumb'
-        'index body'
-        'index aside';
-      gap: 20px 24px;
-    }
-
-    .work-index {
-      grid-area: index;
+        'thumb'
+        'body'
+        'aside';
+      gap: 20px;
     }
 
     .work-thumb {
@@ -154,24 +148,11 @@
 
   @media (max-width: 560px) {
     .work-item {
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        'thumb'
-        'body'
-        'aside';
       padding-block: 28px;
-    }
-
-    .work-index {
-      display: none;
     }
 
     .work-thumb {
       max-width: none;
-    }
-
-    .work-title {
-      font-size: 28px;
     }
   }
 }

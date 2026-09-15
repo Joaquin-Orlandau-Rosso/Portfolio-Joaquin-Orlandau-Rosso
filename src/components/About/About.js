@@ -22,7 +22,7 @@ const About = ({ t }) => {
             <dl className="about-facts">
               {t.about.facts.map((fact) => (
                 <div key={fact.label}>
-                  <dt className="eyebrow">{fact.label}</dt>
+                  <dt>{fact.label}</dt>
                   <dd>{fact.value}</dd>
                 </div>
               ))}
@@ -30,7 +30,7 @@ const About = ({ t }) => {
           </div>
 
           <div className="about-stack">
-            <h3 className="eyebrow petrol about-stack-title">{t.about.stackTitle}</h3>
+            <h3 className="about-stack-title">{t.about.stackTitle}</h3>
             <dl>
               {t.about.stack.map((group) => (
                 <div key={group.group} className="stack-group">

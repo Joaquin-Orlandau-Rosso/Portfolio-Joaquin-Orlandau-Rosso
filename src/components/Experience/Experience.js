@@ -7,7 +7,7 @@ const Entry = ({ period, heading, org, place, description, tech }) => {
 
   return (
     <li ref={ref} className="exp-entry reveal">
-      <span className="exp-period eyebrow">{period}</span>
+      <span className="exp-period">{period}</span>
       <div className="exp-body">
         <h4 className="display exp-heading">{heading}</h4>
         <p className="exp-org">
@@ -37,7 +37,7 @@ const Experience = ({ t }) => (
 
       <div className="exp-columns">
         <div className="exp-group">
-          <h3 className="eyebrow petrol exp-group-title">{t.experience.workTitle}</h3>
+          <h3 className="exp-group-title">{t.experience.workTitle}</h3>
           <ul>
             {t.experience.jobs.map((job) => (
               <Entry
@@ -54,7 +54,7 @@ const Experience = ({ t }) => (
         </div>
 
         <div className="exp-group">
-          <h3 className="eyebrow petrol exp-group-title">{t.experience.educationTitle}</h3>
+          <h3 className="exp-group-title">{t.experience.educationTitle}</h3>
           <ul>
             {t.experience.education.map((item) => (
               <Entry

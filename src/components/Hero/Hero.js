@@ -10,7 +10,7 @@ const Hero = ({ t }) => {
       <div className="container">
         <div className="hero-grid">
           <div className="hero-text">
-            <p className="eyebrow accent">{t.hero.eyebrow}</p>
+            <p className="hero-eyebrow">{t.hero.eyebrow}</p>
             <h1 className="display hero-title">
               {before}
               <span className="highlight">{word}</span>
@@ -27,15 +27,11 @@ const Hero = ({ t }) => {
             </div>
           </div>
 
-          <figure className="hero-figure">
+          <div className="hero-figure">
             <div className="hero-photo">
               <img src="/imgs/joaquin.jpg" alt={t.hero.photoAlt} width="702" height="702" />
             </div>
-            <figcaption>
-              <span className="eyebrow petrol">{t.hero.fig}</span>
-              <span className="eyebrow">{t.hero.caption}</span>
-            </figcaption>
-          </figure>
+          </div>
         </div>
 
         <div className="rule" />
@@ -43,7 +39,7 @@ const Hero = ({ t }) => {
         <dl className="facts">
           {t.facts.map((fact) => (
             <div key={fact.label} className="fact">
-              <dt className="eyebrow accent">{fact.label}</dt>
+              <dt className="eyebrow">{fact.label}</dt>
               <dd>
                 <span className="display fact-value">{fact.value}</span>
                 <span className="fact-detail">{fact.detail}</span>

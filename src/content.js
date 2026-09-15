@@ -72,8 +72,6 @@ export const content = {
       cta: 'Hablemos',
       cv: 'Descargar CV',
       photoAlt: 'Joaquín Orlandau Rosso en su escritorio',
-      fig: 'Fig. 01',
-      caption: 'Joaquín, 2026',
     },
     facts: [
       { label: 'Último puesto', value: 'Viupik · España', detail: 'Dic 2025 — Abr 2026 · Full stack' },
@@ -242,8 +240,6 @@ export const content = {
       cta: "Let's talk",
       cv: 'Download CV',
       photoAlt: 'Joaquín Orlandau Rosso at his desk',
-      fig: 'Fig. 01',
-      caption: 'Joaquín, 2026',
     },
     facts: [
       { label: 'Latest role', value: 'Viupik · Spain', detail: 'Dec 2025 — Apr 2026 · Full stack' },
