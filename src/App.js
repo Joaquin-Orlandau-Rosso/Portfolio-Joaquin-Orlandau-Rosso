@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { content } from './content';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
+import Clients from './components/Clients/Clients';
 import Work from './components/Work/Work';
+import Minis from './components/Minis/Minis';
 import Experience from './components/Experience/Experience';
 import About from './components/About/About';
 import Contact from './components/Contact/Contact';
@@ -71,7 +73,9 @@ function App() {
       <Navbar t={t} darkMode={darkMode} toggleDarkMode={toggleDarkMode} toggleLanguage={toggleLanguage} />
       <main>
         <Hero t={t} />
+        <Clients t={t} />
         <Work t={t} />
+        <Minis t={t} />
         <Experience t={t} />
         <About t={t} />
         <Contact t={t} />

@@ -29,24 +29,45 @@ const projects = {
     demo: null,
     code: null,
   },
-  danel: {
-    image: '/imgs/danel.jpg',
-    tech: ['React', 'Vite', 'CSS'],
-    demo: 'https://portafolio-danel-nine.vercel.app/',
-    code: 'https://github.com/Joaquin-Orlandau-Rosso/Portafolio-danel',
+};
+
+// Sitios de clientes: captura de la página entera (880 px de ancho) para recorrerla al pasar el mouse.
+const clients = {
+  novagraf: {
+    url: 'https://novagraf.com.ar/',
+    domain: 'novagraf.com.ar',
+    image: '/imgs/clientes/novagraf.jpg',
+    size: [880, 2078],
   },
   marsela: {
-    image: '/imgs/marsela.jpg',
-    tech: ['React', 'SCSS', 'Vercel'],
-    demo: 'https://marselarosso.vercel.app/',
-    code: 'https://github.com/Joaquin-Orlandau-Rosso/Nueva-pagina-marsela',
+    url: 'https://www.marsselarosso.com/',
+    domain: 'marsselarosso.com',
+    image: '/imgs/clientes/marsela.jpg',
+    size: [880, 1833],
+  },
+  danel: {
+    url: 'https://portafolio-danel-nine.vercel.app/',
+    domain: 'portafolio-danel-nine.vercel.app',
+    image: '/imgs/clientes/danel.jpg',
+    size: [880, 2078],
   },
   maria: {
-    image: '/imgs/maria-astrocoach.jpg',
-    tech: ['React', 'Styled Components'],
-    demo: 'https://mariaasastrocoach.vercel.app/',
-    code: 'https://github.com/Joaquin-Orlandau-Rosso/MariaAstroCoach',
+    url: 'https://mariaasastrocoach.vercel.app/',
+    domain: 'mariaasastrocoach.vercel.app',
+    image: '/imgs/clientes/maria.jpg',
+    size: [880, 2078],
   },
+};
+
+const demos = 'https://ejemplos-joaquin.vercel.app';
+
+const minis = {
+  turnos: { icon: 'calendar', tech: ['React', 'TypeScript', 'Vite'], demo: `${demos}/turnos/` },
+  consorcio: { icon: 'building', tech: ['React', 'TypeScript', 'Vite'], demo: `${demos}/consorcio/` },
+  cotizador: { icon: 'box', tech: ['React', 'TypeScript', 'Vite'], demo: `${demos}/cotizador/` },
+  sysvital: { icon: 'monitor', tech: ['PowerShell', 'WinForms', 'C#'], demo: null },
+  web2app: { icon: 'phone', tech: ['Node.js', 'Capacitor', 'Android'], demo: null },
+  paneles: { icon: 'twitch', tech: ['Node.js', 'Chrome headless', 'ffmpeg'], demo: null },
 };
 
 export const content = {
@@ -54,7 +75,8 @@ export const content = {
     lang: 'es',
     htmlTitle: 'Joaquín Orlandau Rosso – Desarrollador Full Stack',
     nav: {
-      work: 'Trabajo',
+      clients: 'Clientes',
+      work: 'Proyectos',
       experience: 'Experiencia',
       about: 'Sobre mí',
       contact: 'Contacto',
@@ -69,13 +91,70 @@ export const content = {
       // TODO (Joaquín): reescribí título y párrafo con tus palabras; esto es un borrador simple
       title: 'Desarrollador full stack.',
       lead:
-        'Soy Joaquín. Trabajé cinco meses en Viupik, una empresa española de visualización 3D, haciendo frontend y backend con React, Node.js y MongoDB. Ahora estoy armando mis propias apps con Supabase y Capacitor, y busco un equipo donde seguir aprendiendo.',
+        'Soy Joaquín. Hago sitios web para negocios y apps propias con React, Supabase y Capacitor. Trabajé cinco meses en Viupik, una empresa española de visualización 3D, en frontend y backend con React, Node.js y MongoDB. Hoy tomo proyectos y busco sumarme a un equipo.',
       cta: 'Hablemos',
       cv: 'Descargar CV',
       photoAlt: 'Joaquín Orlandau Rosso en su escritorio',
     },
+    clients: {
+      eyebrow: 'Sitios de clientes',
+      note: 'Publicados y en uso',
+      lead: 'Pasá el mouse por una página para recorrerla; con un clic la abrís.',
+      leadTouch: 'Cada página se recorre sola; tocala para abrirla.',
+      visit: 'Ver sitio',
+      items: [
+        { ...clients.novagraf, name: 'Novagraf', kind: 'Fabricante de máquinas para packaging' },
+        { ...clients.marsela, name: 'Marsela Rosso', kind: 'Masajes, cosmiatría y tienda de aceites' },
+        { ...clients.danel, name: 'Danel', kind: 'Editor de video' },
+        { ...clients.maria, name: 'María AstroCoach', kind: 'Astrología y coaching' },
+      ],
+    },
+    minis: {
+      eyebrow: 'Mini proyectos',
+      note: 'Ideas chicas, terminadas',
+      demo: 'Probarlo',
+      private: 'Sin demo pública',
+      items: [
+        {
+          ...minis.turnos,
+          title: 'Turnos con seña',
+          platform: 'Web · demo',
+          summary: 'El cliente reserva y paga la seña desde el celular; el negocio ve la agenda del día sin turnos encimados.',
+        },
+        {
+          ...minis.consorcio,
+          title: 'Portal de consorcio',
+          platform: 'Web · demo',
+          summary: 'Expensas, gastos del edificio y reclamos con fotos, con una vista para propietarios y otra para la administración.',
+        },
+        {
+          ...minis.cotizador,
+          title: 'Cotizador con stock por fecha',
+          platform: 'Web · demo',
+          summary: 'Para alquiler de mobiliario o equipos: muestra lo que queda libre para cada fecha y reserva con seña.',
+        },
+        {
+          ...minis.sysvital,
+          title: 'SysVital',
+          platform: 'Windows',
+          summary: 'Diagnóstico de PCs para técnicos: analiza el equipo, arregla lo común y prueba cámara, micrófono y puertos antes de entregar.',
+        },
+        {
+          ...minis.web2app,
+          title: 'web2app',
+          platform: 'CLI',
+          summary: 'Convierte un sitio en una app Android con comportamiento nativo: volver atrás, sin conexión y deslizar para recargar.',
+        },
+        {
+          ...minis.paneles,
+          title: 'Paneles de Twitch',
+          platform: 'CLI',
+          summary: 'Genera los paneles de un canal a partir de un JSON con sus textos, en tres paletas, listos para subir.',
+        },
+      ],
+    },
     work: {
-      eyebrow: 'Trabajo seleccionado',
+      eyebrow: 'Proyectos propios',
       kind: { own: 'Producto propio', tool: 'Herramienta propia', client: 'Cliente' },
       demo: 'Ver sitio',
       code: 'Código',
@@ -107,30 +186,6 @@ export const content = {
           summary: 'Encuentra los mejores momentos de un VOD por picos de chat y los puntúa con Gemini.',
           detail:
             'Descarga el chat por GraphQL, detecta picos con z-score sobre ventanas de 5 segundos, baja solo esos fragmentos y Gemini titula y rankea cada clip. Perfiles de humor por streamer que aprenden con ejemplos.',
-        },
-        {
-          ...projects.danel,
-          title: 'Portafolio Danel',
-          kind: 'client',
-          platform: 'Web',
-          summary: 'Sitio de presentación para un editor de video.',
-          detail: 'Bilingüe, responsive y pensado para mostrar reel y servicios sin distracciones.',
-        },
-        {
-          ...projects.marsela,
-          title: 'Masajes Marsela Rosso',
-          kind: 'client',
-          platform: 'Web',
-          summary: 'Web de negocio local con foco en SEO y captación de turnos.',
-          detail: 'Reserva de turnos, testimonios y metadatos pensados para búsquedas locales.',
-        },
-        {
-          ...projects.maria,
-          title: 'María AstroCoach',
-          kind: 'client',
-          platform: 'Web',
-          summary: 'Landing de servicios con foco en reservas.',
-          detail: 'Presentación clara de sesiones, preguntas frecuentes y llamado a la acción directo.',
         },
       ],
     },
@@ -217,7 +272,8 @@ export const content = {
     lang: 'en',
     htmlTitle: 'Joaquín Orlandau Rosso – Full Stack Developer',
     nav: {
-      work: 'Work',
+      clients: 'Clients',
+      work: 'Projects',
       experience: 'Experience',
       about: 'About',
       contact: 'Contact',
@@ -232,13 +288,70 @@ export const content = {
       // TODO (Joaquín): rewrite title and paragraph in your own words; this is a plain draft
       title: 'Full stack developer.',
       lead:
-        'I am Joaquín. I worked five months at Viupik, a Spanish 3D visualization company, doing frontend and backend with React, Node.js and MongoDB. Now I am building my own apps with Supabase and Capacitor, and looking for a team to keep learning with.',
+        'I am Joaquín. I build websites for businesses and my own apps with React, Supabase and Capacitor. I worked five months at Viupik, a Spanish 3D visualization company, doing frontend and backend with React, Node.js and MongoDB. I take on projects and I am looking to join a team.',
       cta: "Let's talk",
       cv: 'Download CV',
       photoAlt: 'Joaquín Orlandau Rosso at his desk',
     },
+    clients: {
+      eyebrow: 'Client websites',
+      note: 'Live and in use',
+      lead: 'Hover over a page to scroll through it; click to open it.',
+      leadTouch: 'Each page scrolls on its own; tap it to open it.',
+      visit: 'Visit site',
+      items: [
+        { ...clients.novagraf, name: 'Novagraf', kind: 'Packaging machinery manufacturer' },
+        { ...clients.marsela, name: 'Marsela Rosso', kind: 'Massage, skincare and essential oils shop' },
+        { ...clients.danel, name: 'Danel', kind: 'Video editor' },
+        { ...clients.maria, name: 'María AstroCoach', kind: 'Astrology and coaching' },
+      ],
+    },
+    minis: {
+      eyebrow: 'Mini projects',
+      note: 'Small ideas, finished',
+      demo: 'Try it',
+      private: 'No public demo',
+      items: [
+        {
+          ...minis.turnos,
+          title: 'Bookings with deposit',
+          platform: 'Web · demo',
+          summary: 'Customers book and pay a deposit from their phone; the business sees the day’s schedule with no double bookings.',
+        },
+        {
+          ...minis.consorcio,
+          title: 'Building management portal',
+          platform: 'Web · demo',
+          summary: 'Fees, building expenses and complaints with photos, with one view for owners and another for the administration.',
+        },
+        {
+          ...minis.cotizador,
+          title: 'Quote builder with stock by date',
+          platform: 'Web · demo',
+          summary: 'For furniture or equipment rental: shows what is still free on each date and books with a deposit.',
+        },
+        {
+          ...minis.sysvital,
+          title: 'SysVital',
+          platform: 'Windows',
+          summary: 'PC diagnostics for technicians: analyzes the machine, fixes the usual issues and tests camera, mic and ports before handover.',
+        },
+        {
+          ...minis.web2app,
+          title: 'web2app',
+          platform: 'CLI',
+          summary: 'Turns a website into an Android app with native behavior: back navigation, offline screen and pull to refresh.',
+        },
+        {
+          ...minis.paneles,
+          title: 'Twitch panels',
+          platform: 'CLI',
+          summary: 'Generates a channel’s panels from a JSON with its texts, in three palettes, ready to upload.',
+        },
+      ],
+    },
     work: {
-      eyebrow: 'Selected work',
+      eyebrow: 'Own projects',
       kind: { own: 'Own product', tool: 'Own tool', client: 'Client' },
       demo: 'Visit site',
       code: 'Code',
@@ -270,30 +383,6 @@ export const content = {
           summary: 'Finds the best moments of a VOD from chat spikes and scores them with Gemini.',
           detail:
             'Downloads chat over GraphQL, detects spikes with a z-score over 5-second windows, fetches only those fragments, and Gemini titles and ranks each clip. Per-streamer humor profiles that learn from examples.',
-        },
-        {
-          ...projects.danel,
-          title: 'Danel Portfolio',
-          kind: 'client',
-          platform: 'Web',
-          summary: 'Presentation site for a video editor.',
-          detail: 'Bilingual, responsive and built to show reel and services without distractions.',
-        },
-        {
-          ...projects.marsela,
-          title: 'Marsela Rosso Massage',
-          kind: 'client',
-          platform: 'Web',
-          summary: 'Local business website focused on SEO and bookings.',
-          detail: 'Appointment booking, testimonials and metadata tuned for local search.',
-        },
-        {
-          ...projects.maria,
-          title: 'María AstroCoach',
-          kind: 'client',
-          platform: 'Web',
-          summary: 'Services landing page focused on bookings.',
-          detail: 'Clear presentation of sessions, FAQ and a direct call to action.',
         },
       ],
     },

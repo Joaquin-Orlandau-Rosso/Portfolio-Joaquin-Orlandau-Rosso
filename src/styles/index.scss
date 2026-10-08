@@ -19,6 +19,14 @@
   --ok: #2f7d4f;
   --thumb-bg: #e9e2d5;
 
+  // Franja oscura de clientes (igual en los dos modos, apenas más profunda en el oscuro)
+  --band-bg: #16130e;
+  --band-ink: #f1ebe0;
+  --band-muted: #a39a8c;
+  --band-line: #3a3329;
+  --band-chrome: #221e18;
+  --band-accent: #e8876b;
+
   --font-body: 'Hanken Grotesk', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-display: var(--font-body);
   --radius: 6px;
@@ -45,6 +53,10 @@
   --accent-2-soft: rgba(79, 179, 191, 0.25);
   --ok: #5fbf85;
   --thumb-bg: #221d17;
+
+  --band-bg: #0b0907;
+  --band-line: #2e2821;
+  --band-chrome: #1c1813;
 
   color-scheme: dark;
 }

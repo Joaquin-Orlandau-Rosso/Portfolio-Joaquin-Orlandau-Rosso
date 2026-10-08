@@ -22,6 +22,7 @@ const Navbar = ({ t, darkMode, toggleDarkMode, toggleLanguage }) => {
   }, [open]);
 
   const items = [
+    { label: t.nav.clients, href: '#clientes' },
     { label: t.nav.work, href: '#trabajo' },
     { label: t.nav.experience, href: '#experiencia' },
     { label: t.nav.about, href: '#sobre-mi' },
