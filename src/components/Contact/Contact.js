@@ -53,8 +53,12 @@ const Contact = ({ t }) => {
             aria-label={t.contact.copyLabel}
           >
             {copied ? <PiCheckBold aria-hidden="true" /> : <PiCopy aria-hidden="true" />}
-            <span aria-live="polite">{copied ? t.contact.copied : t.contact.copy}</span>
+            <span>{copied ? t.contact.copied : t.contact.copy}</span>
           </button>
+          {/* El aviso va afuera del botón: adentro de un botón algunos lectores no lo anuncian. */}
+          <span className="sr-only" role="status">
+            {copied ? t.contact.copied : ''}
+          </span>
         </div>
 
         <ul className="contact-links">

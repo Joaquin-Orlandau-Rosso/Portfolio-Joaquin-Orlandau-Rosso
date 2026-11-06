@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { content } from './content';
 import Navbar from './components/Navbar/Navbar';
@@ -65,8 +65,22 @@ function App() {
     document.querySelector('meta[name="description"]')?.setAttribute('content', t.htmlDescription);
   }, [language, t.htmlTitle, t.htmlDescription]);
 
+  // Links con ancla (por ejemplo /#clientes desde el CV): el navegador busca la sección antes de
+  // que React la cree y se queda arriba. Una vez montada la página, se baja a mano.
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (!id) return;
+    const destino = document.getElementById(id);
+    if (destino) requestAnimationFrame(() => destino.scrollIntoView({ behavior: 'instant' }));
+  }, []);
+
+  // El valor vigente en una ref: dos clics seguidos tienen que cambiar dos veces, aunque el
+  // estado todavía no se haya actualizado por la transición.
+  const darkRef = useRef(darkMode);
+
   const toggleDarkMode = () => {
-    const next = !darkMode;
+    const next = !darkRef.current;
+    darkRef.current = next;
     storage.set('theme', next ? 'dark' : 'light');
     const aplicar = () => flushSync(() => setDarkMode(next));
     const sinMovimiento = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
@@ -93,7 +107,7 @@ function App() {
         {t.skip}
       </a>
       <Navbar t={t} darkMode={darkMode} toggleDarkMode={toggleDarkMode} toggleLanguage={toggleLanguage} />
-      <main id="contenido">
+      <main id="contenido" tabIndex={-1}>
         <Hero t={t} />
         <Clients t={t} />
         <Work t={t} />

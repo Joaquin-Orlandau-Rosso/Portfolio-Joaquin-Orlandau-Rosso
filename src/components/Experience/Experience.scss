@@ -96,9 +96,19 @@
     margin-top: 0.875rem;
   }
 
-  @media (max-width: 60em) {
+  @media (max-width: 59.99em) {
     .exp-columns {
       grid-template-columns: minmax(0, 1fr);
+      // Mismo tope que el texto de los casos: renglones de ~70 caracteres en tablet.
+      max-width: 40rem;
+    }
+  }
+
+  // En celular las fechas van siempre abajo del puesto (antes dependía del largo de cada uno).
+  @media (max-width: 30em) {
+    .exp-top {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 }

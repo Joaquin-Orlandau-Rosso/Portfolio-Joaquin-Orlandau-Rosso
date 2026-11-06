@@ -36,7 +36,9 @@ const About = ({ t }) => {
               {t.about.stack.map((group) => (
                 <div key={group.id} className="stack-group">
                   <dt>{group.group}</dt>
-                  <dd>{group.items.join(' · ')}</dd>
+                  {/* Espacios duros dentro de cada tecnología y antes del punto: el renglón nunca
+                      parte "Gemini / API" ni arranca con "·". */}
+                  <dd>{group.items.map((item) => item.replace(/ /g, ' ')).join(' · ')}</dd>
                 </div>
               ))}
             </dl>

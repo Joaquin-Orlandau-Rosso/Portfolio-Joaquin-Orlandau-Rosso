@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { PiMoon, PiSun } from 'react-icons/pi';
 import useActiveSection from '../../hooks/useActiveSection';
 import './Navbar.scss';
@@ -18,6 +18,7 @@ const Navbar = ({ t, darkMode, toggleDarkMode, toggleLanguage }) => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const activa = useActiveSection(SECCIONES);
+  const botonMenu = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -26,12 +27,37 @@ const Navbar = ({ t, darkMode, toggleDarkMode, toggleLanguage }) => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Cerrar el menú móvil con Escape
+  // Cerrar el menú móvil con Escape. Si el foco estaba adentro, vuelve al botón "Menú"
+  // (si no, queda en un enlace oculto y se pierde).
   useEffect(() => {
     if (!open) return undefined;
-    const onKey = (e) => e.key === 'Escape' && setOpen(false);
+    const onKey = (e) => {
+      if (e.key !== 'Escape') return;
+      const focoAdentro = document.getElementById('mobile-nav')?.contains(document.activeElement);
+      setOpen(false);
+      if (focoAdentro) botonMenu.current?.focus();
+    };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
+
+  // Si se baja con el menú abierto, se cierra: si no, el panel queda fijo tapando media pantalla.
+  useEffect(() => {
+    if (!open) return undefined;
+    const desde = window.scrollY;
+    const alBajar = () => Math.abs(window.scrollY - desde) > 48 && setOpen(false);
+    window.addEventListener('scroll', alBajar, { passive: true });
+    return () => window.removeEventListener('scroll', alBajar);
+  }, [open]);
+
+  // Si se agranda la ventana hasta escritorio con el menú abierto, se cierra.
+  useEffect(() => {
+    if (!open || !window.matchMedia) return undefined;
+    const escritorio = window.matchMedia('(min-width: 55.01em)');
+    const alCambiar = () => escritorio.matches && setOpen(false);
+    alCambiar();
+    escritorio.addEventListener?.('change', alCambiar);
+    return () => escritorio.removeEventListener?.('change', alCambiar);
   }, [open]);
 
   const items = [
@@ -46,7 +72,7 @@ const Navbar = ({ t, darkMode, toggleDarkMode, toggleLanguage }) => {
     <header className={`navbar ${scrolled ? 'is-scrolled' : ''} ${open ? 'is-open' : ''}`}>
       <div className="container navbar-inner">
         <a href="#top" className="navbar-name" onClick={() => setOpen(false)}>
-          Joaquín Orlandau Rosso
+          Joaquín <span className="navbar-surname">Orlandau Rosso</span>
         </a>
 
         <nav className="navbar-links" aria-label={t.nav.label}>
@@ -62,7 +88,8 @@ const Navbar = ({ t, darkMode, toggleDarkMode, toggleLanguage }) => {
             type="button"
             className="navbar-lang"
             onClick={toggleLanguage}
-            aria-label={t.nav.toggleLang}
+            // El nombre arranca con lo que se ve ("ES EN") para que el control por voz lo encuentre.
+            aria-label={`ES EN, ${t.nav.toggleLang}`}
             lang={t.lang === 'es' ? 'en' : 'es'}
           >
             <span className={t.lang === 'es' ? 'is-on' : undefined}>ES</span>
@@ -81,6 +108,7 @@ const Navbar = ({ t, darkMode, toggleDarkMode, toggleLanguage }) => {
             {t.nav.contact}
           </a>
           <button
+            ref={botonMenu}
             type="button"
             className="navbar-menu"
             onClick={() => setOpen((v) => !v)}

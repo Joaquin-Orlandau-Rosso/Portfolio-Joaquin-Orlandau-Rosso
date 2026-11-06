@@ -27,7 +27,7 @@ const Marco = ({ src, url, href }) => (
       <i />
       <span>{url}</span>
     </span>
-    <img src={src} alt="" width="640" height="400" decoding="async" />
+    <img src={src} alt="" width="640" height="400" loading="lazy" decoding="async" />
   </a>
 );
 
@@ -73,18 +73,21 @@ const Hero = ({ t }) => {
             <span>{t.hero.place}</span>
           </p>
 
-          <h1 className="hero-title">
-            <Palabras texto={t.hero.title} />
+          {/* El título se lee entero: los spans de cada palabra son solo para la animación. */}
+          <h1 className="hero-title" aria-label={t.hero.title}>
+            <span aria-hidden="true">
+              <Palabras texto={t.hero.title} />
+            </span>
           </h1>
 
-          <p className="hero-tagline entra" style={{ '--orden': 3 }}>
+          <p className="hero-tagline entra" style={{ '--orden': 2 }}>
             {t.hero.tagline}
           </p>
-          <p className="hero-lead entra" style={{ '--orden': 4 }}>
+          <p className="hero-lead entra" style={{ '--orden': 3 }}>
             {t.hero.lead}
           </p>
 
-          <div className="hero-actions entra" style={{ '--orden': 5 }}>
+          <div className="hero-actions entra" style={{ '--orden': 4 }}>
             <a href="#proyectos" className="btn btn-primary">
               {t.hero.cta}
               <PiArrowDownBold aria-hidden="true" />
@@ -106,17 +109,17 @@ const Hero = ({ t }) => {
 
         <div className="hero-stage">
           <div className="capa capa-foto" data-profundidad="0.06">
-            <div className="entra" style={{ '--orden': 2 }}>
+            <div className="entra" style={{ '--orden': 1 }}>
               <img className="hero-photo" src="/imgs/joaquin.jpg" alt={t.hero.photoAlt} width="702" height="702" />
             </div>
           </div>
           <div className="capa capa-a" data-profundidad="-0.2" aria-hidden="true">
-            <div className="entra" style={{ '--orden': 5 }}>
+            <div className="entra" style={{ '--orden': 3 }}>
               <Marco src="/imgs/hero-elodiff.webp" url="elodiff.app" href="#proyectos" />
             </div>
           </div>
           <div className="capa capa-b" data-profundidad="0.28" aria-hidden="true">
-            <div className="entra" style={{ '--orden': 7 }}>
+            <div className="entra" style={{ '--orden': 5 }}>
               <Marco src="/imgs/hero-novagraf.webp" url="novagraf.com.ar" href="#clientes" />
             </div>
           </div>

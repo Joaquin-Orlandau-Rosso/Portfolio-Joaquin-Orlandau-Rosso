@@ -23,7 +23,7 @@ const clients = {
     url: 'https://novagraf.com.ar/',
     domain: 'novagraf.com.ar',
     year: 2026,
-    image: '/imgs/clientes/novagraf.jpg',
+    image: '/imgs/clientes/novagraf.webp',
     size: [880, 2078],
     tech: ['HTML', 'CSS', 'JavaScript'],
   },
@@ -33,7 +33,7 @@ const clients = {
     url: 'https://www.marsselarosso.com/',
     domain: 'marsselarosso.com',
     year: 2026,
-    image: '/imgs/clientes/marsela.jpg',
+    image: '/imgs/clientes/marsela.webp',
     size: [880, 1833],
     tech: ['React', 'Vite', 'React Three Fiber'],
   },
@@ -43,17 +43,17 @@ const clients = {
     url: 'https://portafolio-danel-nine.vercel.app/',
     domain: 'portafolio-danel-nine.vercel.app',
     year: 2025,
-    image: '/imgs/clientes/danel.jpg',
+    image: '/imgs/clientes/danel.webp',
     size: [880, 2078],
     tech: ['React', 'Tailwind'],
   },
   maria: {
     id: 'maria',
-    name: 'María AstroCoach',
+    name: 'María Astro Coach',
     url: 'https://mariaasastrocoach.vercel.app/',
     domain: 'mariaasastrocoach.vercel.app',
     year: 2026,
-    image: '/imgs/clientes/maria.jpg',
+    image: '/imgs/clientes/maria.webp',
     size: [880, 2078],
     tech: ['HTML', 'CSS', 'JavaScript'],
   },
@@ -72,21 +72,21 @@ const projects = {
   despensa: {
     id: 'despensa',
     title: 'Despensa',
-    image: '/imgs/despensa.jpg',
+    image: '/imgs/despensa.webp',
     tech: ['React', 'Vite', 'Tailwind', 'Capacitor', 'Supabase', 'Gemini'],
     demo: 'https://despensa-app-delta.vercel.app/',
   },
   ruleta: {
     id: 'ruleta',
     title: 'Ruleta Gamer',
-    image: '/imgs/ruleta-gamer.jpg',
+    image: '/imgs/ruleta-gamer.webp',
     tech: ['Python', 'pywebview', 'Canvas', 'Twitch EventSub'],
   },
   clips: {
     id: 'clips',
     title: 'Twitch Clips AI',
-    image: '/imgs/twitch-clips.jpg',
-    tech: ['Python', 'yt-dlp', 'ffmpeg', 'Gemini API'],
+    image: '/imgs/twitch-clips.webp',
+    tech: ['Python', 'yt-dlp', 'ffmpeg', 'Gemini'],
   },
 };
 
@@ -98,13 +98,13 @@ const more = {
   cotizador: { id: 'cotizador', tech: ['React', 'TypeScript', 'Vite'], demo: `${demos}/cotizador/` },
   sysvital: { id: 'sysvital', tech: ['PowerShell', 'WinForms', 'C#'] },
   web2app: { id: 'web2app', tech: ['Node.js', 'Capacitor', 'Android'] },
-  paneles: { id: 'paneles', tech: ['Node.js', 'Chrome headless', 'ffmpeg'] },
+  paneles: { id: 'paneles', tech: ['Node.js', 'Headless Chrome', 'ffmpeg'] },
 };
 
 export const content = {
   es: {
     lang: 'es',
-    htmlTitle: 'Joaquín Orlandau Rosso – Desarrollador Full Stack',
+    htmlTitle: 'Joaquín Orlandau Rosso – Desarrollador full stack',
     htmlDescription:
       'Desarrollador full stack en Buenos Aires: webs y apps con React, Next.js, Node.js y TypeScript. Experiencia en Viupik (España), sitios para clientes y productos propios.',
     skip: 'Saltar al contenido',
@@ -126,14 +126,14 @@ export const content = {
       title: 'Desarrollador full stack.',
       tagline: 'Webs y apps de punta a punta, con React, Node.js y TypeScript.',
       lead:
-        'Soy Joaquín. Desarrollé funciones de IA en producción para Viupik (España), hago sitios y sistemas para negocios, y construyo productos propios como EloDiff.',
+        'Soy Joaquín. En Viupik (España) desarrollé funciones de IA que llegaron a producción; hoy hago sitios y sistemas para negocios y armo productos propios, como EloDiff.',
       cta: 'Ver proyectos',
       cv: 'Descargar CV',
-      photoAlt: 'Joaquín Orlandau Rosso en su escritorio',
+      photoAlt: 'Joaquín Orlandau Rosso en una oficina',
     },
     clients: {
       title: 'Sitios para clientes',
-      note: 'Publicados y en uso',
+      note: 'Todos publicados',
       lead: 'Pasá el mouse por un sitio para recorrerlo; con un clic lo abrís.',
       leadTouch: 'Tocá un sitio para abrirlo.',
       shotAlt: (name) => `Captura del sitio de ${name}`,
@@ -146,7 +146,7 @@ export const content = {
         {
           ...clients.marsela,
           kind: 'Masajes, cosmiatría y aceites',
-          did: 'Sitio con tienda de aceites esenciales, productos en 3D que se giran con el mouse y pedido por WhatsApp.',
+          did: 'Sitio nuevo con tienda de aceites esenciales, productos en 3D que se pueden girar y pedido por WhatsApp.',
         },
         {
           ...clients.danel,
@@ -178,7 +178,7 @@ export const content = {
           problem:
             'Los sitios de estadísticas muestran números, pero no dicen qué cambiar. EloDiff explica cada muerte de tus partidas más difíciles y te deja hasta tres focos con metas concretas.',
           built:
-            'Todo: la web en Next.js y TypeScript, el programa de Windows en Electron que detecta el final de cada partida y arma el análisis solo, y los informes con la API de Claude, en español e inglés.',
+            'Todo: la web en Next.js y TypeScript, en español e inglés; el programa de Windows en Electron, que detecta cuándo termina cada partida y arma el análisis solo; y los informes, que se generan con la API de Claude.',
           hard:
             'La API de Riot permite 100 llamadas cada dos minutos. Armé un limitador con dos prioridades para que el análisis que alguien está esperando no quede atrás de las tareas de fondo. Y cada meta es una regla que se evalúa sola contra las partidas nuevas: el informe siguiente arranca con cuáles cumpliste.',
           demoLabel: 'Ver la demo',
@@ -186,13 +186,14 @@ export const content = {
         {
           ...projects.despensa,
           platform: 'Android y web',
+          status: 'Todavía no está en Google Play',
           summary: 'Inventario del hogar: escaneás el ticket del súper y los productos se cargan solos.',
           problem:
             'Saber qué hay en casa, qué está por vencer y qué falta comprar, entre varias personas y sin cargar todo a mano.',
           built:
             'App en React con Capacitor para Android y versión web. Lee tickets con Gemini, escanea códigos de barras, sugiere recetas con lo que tenés y comparte la despensa con tu familia, con permisos por persona.',
           hard:
-            'Que las reglas vivan en la base y no en la app: seguridad por filas en Postgres (RLS), los cupos del plan gratis se descuentan en el servidor y lo que cargás sin conexión queda en una cola que se sincroniza al volver la señal.',
+            'Que las reglas vivan en el servidor y no en la app: seguridad a nivel de fila (RLS) en Postgres y cupos del plan gratis que se controlan del lado del servidor. Y lo que cargás sin conexión queda en una cola que se sincroniza cuando vuelve la señal.',
           demoLabel: 'Abrir la versión web',
         },
       ],
@@ -213,7 +214,7 @@ export const content = {
     },
     more: {
       title: 'Demos y herramientas',
-      note: 'Más chicas, terminadas',
+      note: 'Proyectos más chicos y completos',
       try: 'Probar',
       items: [
         {
@@ -240,9 +241,9 @@ export const content = {
         {
           ...more.sysvital,
           title: 'SysVital',
-          platform: 'Windows',
+          platform: 'Programa de Windows',
           summary:
-            'Diagnóstico de PCs para técnicos: analiza el equipo, arregla lo común y prueba cámara, micrófono y puertos antes de entregar. Más de 3.300 pruebas automatizadas.',
+            'Diagnóstico de PCs para técnicos: analiza el equipo, arregla los problemas comunes y prueba cámara, micrófono y puertos antes de devolverlo. El código tiene más de 3.300 pruebas automatizadas.',
         },
         {
           ...more.web2app,
@@ -273,7 +274,7 @@ export const content = {
             'Sitios y sistemas para negocios, de punta a punta: relevamiento, diseño, desarrollo, dominio y puesta en producción.',
             'Entre otros, el sitio de Novagraf (catálogo, fichas técnicas y cotizaciones) y la tienda con productos en 3D de Marsela Rosso.',
           ],
-          tech: ['React', 'TypeScript', 'Vite', 'Three.js'],
+          tech: ['React', 'Vite', 'React Three Fiber', 'JavaScript', 'HTML', 'CSS'],
         },
         {
           id: 'viupik',
@@ -283,8 +284,8 @@ export const content = {
           period: 'Dic 2025 – Abr 2026',
           points: [
             'Desarrollé y mantuve IA Studio 2, la herramienta en React y TypeScript con la que profesionales inmobiliarios generan home staging virtual con IA.',
-            'Armé flujos de agentes de IA de varios pasos: home staging, editores de paredes y pisos, y mejora de imagen.',
-            'Trabajé en el backend en Node.js y MongoDB: procesamiento de imágenes por lotes, usuarios e historial de renders.',
+            'Armé flujos de varios pasos con agentes de IA: home staging, editores de paredes y pisos, y mejora de imagen.',
+            'Trabajé en el backend (Node.js y MongoDB): procesamiento de imágenes por lotes, gestión de usuarios e historial de renders.',
           ],
           tech: ['React', 'TypeScript', 'Node.js', 'MongoDB'],
         },
@@ -295,10 +296,10 @@ export const content = {
           place: 'Buenos Aires',
           period: 'Ene 2024 – Nov 2025',
           points: [
-            'Único desarrollador de un negocio de bienestar: hice su sitio web, que es su principal canal para conseguir clientes.',
+            'Único desarrollador de un negocio de bienestar: hice su primer sitio web, en Next.js, que se volvió su principal canal para conseguir clientes.',
             'Reemplacé la agenda manual por un bot de WhatsApp en Node.js con MongoDB: reserva turnos, manda recordatorios y acepta comandos de administración.',
           ],
-          tech: ['Node.js', 'MongoDB', 'whatsapp-web.js'],
+          tech: ['Next.js', 'Node.js', 'MongoDB', 'whatsapp-web.js'],
         },
       ],
       education: [
@@ -315,14 +316,14 @@ export const content = {
           org: 'Digital House',
           period: '2025 – Actualidad',
           description:
-            'Programa full stack de Digital House con Mercado Libre y Globant. Completé Front End Developer, Testing automatizado e Infraestructura avanzada.',
+            'En curso. Carrera creada con Mercado Libre y Globant; ya completé Front End Developer, Testing automatizado e Infraestructura avanzada.',
         },
         {
           id: 'coder',
           title: 'Carrera de Desarrollo Frontend React',
           org: 'Coderhouse',
           period: '2024 – 2025',
-          description: 'Desarrollo web, JavaScript y React.',
+          description: 'Terminada, con certificado (enero de 2025). Desarrollo web, JavaScript y React.',
         },
         {
           id: 'anthropic',
@@ -336,8 +337,8 @@ export const content = {
     about: {
       title: 'Sobre mí',
       paragraphs: [
-        'Me gusta hacerme cargo de todo el recorrido: entender qué necesita la persona, diseñarlo, programarlo y dejarlo funcionando en producción. En Viupik lo hice dentro de un equipo, con revisión de código y entregas a producción; con mis clientes lo hago de punta a punta.',
-        'Uso IA todos los días para desarrollar y también la integro en lo que hago: EloDiff y Despensa funcionan con modelos de Anthropic y Google.',
+        'Me gusta hacerme cargo de todo el recorrido: entender qué necesita la persona, diseñarlo, programarlo y dejarlo andando. En Viupik lo hacía en equipo, con revisión de código y pasos a producción; con mis clientes me encargo yo de todo, desde la primera charla hasta el sitio publicado.',
+        'Uso IA todos los días para programar y también la sumo a mis proyectos: EloDiff usa la API de Claude y Despensa, la de Gemini.',
         'Cuando no trabajo, juego League of Legends y hago streams. De ahí salieron EloDiff, la Ruleta Gamer y Twitch Clips AI: casi todo lo que programo por mi cuenta arranca por algo que necesitaba yo.',
       ],
       stackTitle: 'Stack',
@@ -346,7 +347,7 @@ export const content = {
         { id: 'back', group: 'Backend', items: ['Node.js', 'Express', 'APIs REST', 'Python', 'Supabase Edge Functions'] },
         { id: 'data', group: 'Datos y nube', items: ['PostgreSQL (Supabase, RLS)', 'MongoDB', 'Vercel', 'AWS (EC2, S3)'] },
         { id: 'mobile', group: 'Mobile y escritorio', items: ['Capacitor (Android)', 'Electron', 'PWA'] },
-        { id: 'ai', group: 'IA', items: ['API de Claude', 'MCP', 'Claude Code', 'Gemini API'] },
+        { id: 'ai', group: 'IA', items: ['API de Claude', 'API de Gemini', 'MCP', 'Claude Code'] },
       ],
       facts: [
         { id: 'place', label: 'Ubicación', value: 'Buenos Aires, Argentina' },
@@ -356,9 +357,9 @@ export const content = {
     },
     contact: {
       title: 'Hablemos.',
-      lead: 'Si tenés un puesto o un proyecto en mente, escribime por mail o por WhatsApp.',
+      lead: 'Si tenés una búsqueda abierta o un proyecto en mente, escribime por mail o por WhatsApp.',
       copy: 'Copiar',
-      copyLabel: 'Copiar el email',
+      copyLabel: 'Copiar el mail',
       copied: 'Copiado',
       whatsapp: 'WhatsApp',
       cv: 'Descargar CV',
@@ -393,16 +394,16 @@ export const content = {
       status: 'Available for work',
       place: 'Buenos Aires, Argentina',
       title: 'Full stack developer.',
-      tagline: 'Websites and apps, end to end, with React, Node.js and TypeScript.',
+      tagline: 'End-to-end websites and apps with React, Node.js and TypeScript.',
       lead:
-        'I’m Joaquín. I shipped AI features to production at Viupik (Spain), I build websites and systems for businesses, and I make my own products, like EloDiff.',
+        'I’m Joaquín. At Viupik (Spain) I shipped AI features to production; now I build websites and web apps for businesses, plus my own products like EloDiff.',
       cta: 'See projects',
       cv: 'Download CV',
-      photoAlt: 'Joaquín Orlandau Rosso at his desk',
+      photoAlt: 'Joaquín Orlandau Rosso in an office',
     },
     clients: {
       title: 'Client websites',
-      note: 'Live and in use',
+      note: 'All live',
       lead: 'Hover over a site to scroll through it; click to open it.',
       leadTouch: 'Tap a site to open it.',
       shotAlt: (name) => `Screenshot of the ${name} website`,
@@ -415,26 +416,26 @@ export const content = {
         {
           ...clients.marsela,
           kind: 'Massage, skincare and essential oils',
-          did: 'Website with an essential oils shop, 3D products you can spin with the mouse and ordering over WhatsApp.',
+          did: 'New website with an essential oils shop, 3D products you can spin around, and WhatsApp ordering.',
         },
         {
           ...clients.danel,
           kind: 'Video editor',
-          did: 'Portfolio in Spanish and English with his work, pricing and contact.',
+          did: 'Portfolio in Spanish and English with his work, pricing and contact info.',
         },
         {
           ...clients.maria,
           kind: 'Astrology and coaching',
-          did: 'Services page with the sessions, how they work, frequent questions and contact.',
+          did: 'Services page covering her sessions, how they work, an FAQ and contact info.',
         },
       ],
-      ask: 'Do you run a business and need a website or a system?',
+      ask: 'Run a business and need a website or a custom app?',
       askCta: 'Ask for a quote',
-      askMessage: 'Hi Joaquín, I saw your portfolio and I would like a quote.',
+      askMessage: 'Hi Joaquín, I saw your portfolio and I’d like a quote.',
     },
     work: {
-      title: 'My own projects',
-      note: 'Planned, designed and built by me',
+      title: 'Personal projects',
+      note: 'I came up with, designed and built each one',
       points: { problem: 'The problem', built: 'What I built', hard: 'The hard part' },
       shotAlt: (title) => `Screenshot of ${title}`,
       cases: [
@@ -442,26 +443,27 @@ export const content = {
           ...projects.elodiff,
           tech: ['Next.js', 'TypeScript', 'Tailwind', 'Electron', 'Riot API', 'Claude API', 'Supabase'],
           platform: 'Web and Windows app',
-          status: 'In early access',
+          status: 'Early access',
           summary: 'AI coach for League of Legends: it analyzes your matches and sets goals it tracks by itself.',
           problem:
             'Stats sites show numbers but don’t tell you what to change. EloDiff explains every death in your hardest games and leaves you with up to three focus areas and concrete goals.',
           built:
-            'All of it: the web app in Next.js and TypeScript, the Windows app in Electron that detects when a match ends and builds the analysis on its own, and the reports with the Claude API, in Spanish and English.',
+            'All of it: the website in Next.js and TypeScript, in Spanish and English; the Windows app in Electron, which detects when a match ends and builds the analysis on its own; and the reports, generated with the Claude API.',
           hard:
-            'The Riot API allows 100 calls every two minutes. I built a rate limiter with two priorities so the analysis someone is waiting for never queues behind background work. And every goal is a rule checked automatically against new matches: the next report opens with the ones you hit.',
+            'The Riot API allows 100 requests every two minutes. I built a rate limiter with two priority levels so the analysis someone is waiting for doesn’t get stuck behind background jobs. And every goal is a rule that’s checked automatically against new matches: the next report opens with the ones you hit.',
           demoLabel: 'See the demo',
         },
         {
           ...projects.despensa,
           platform: 'Android and web',
-          summary: 'Home inventory: scan the supermarket receipt and the products are added for you.',
+          status: 'Not on Google Play yet',
+          summary: 'Pantry tracker: scan your grocery receipt and the items are added for you.',
           problem:
-            'Knowing what is at home, what is about to expire and what to buy, across several people and without typing everything in.',
+            'Keeping track of what’s at home, what’s about to expire and what’s missing, shared by the whole household and without typing everything in.',
           built:
             'A React app with Capacitor for Android, plus a web version. It reads receipts with Gemini, scans barcodes, suggests recipes from what you have and shares the pantry with your family, with per-person permissions.',
           hard:
-            'Keeping the rules in the database, not in the app: row-level security in Postgres (RLS), free-plan quotas are counted on the server, and whatever you add offline waits in a queue that syncs when the signal is back.',
+            'Keeping the rules on the server, not in the app: row-level security (RLS) in Postgres and free-plan limits enforced server-side. And anything you add offline waits in a queue that syncs once you’re back online.',
           demoLabel: 'Open the web version',
         },
       ],
@@ -470,24 +472,24 @@ export const content = {
           ...projects.ruleta,
           platform: 'Windows app',
           summary:
-            'A wheel to decide what to play: it detects the games installed from Steam, Epic, Riot and Xbox, and Twitch chat spins it with bits.',
+            'A wheel to decide what to play: it finds your installed games from Steam, Epic, Riot and Xbox, and Twitch chat can spin it with bits.',
         },
         {
           ...projects.clips,
           platform: 'Command line',
           summary:
-            'Finds the best moments of a stream: it detects chat spikes, downloads only those fragments, and Gemini titles and scores each clip.',
+            'Finds the best moments in a stream: it detects chat spikes, downloads only those segments, and Gemini gives each clip a title and a score.',
         },
       ],
     },
     more: {
       title: 'Demos and tools',
-      note: 'Smaller, finished',
+      note: 'Smaller, complete projects',
       try: 'Try it',
       items: [
         {
           ...more.turnos,
-          title: 'Bookings with deposit',
+          title: 'Appointment booking with deposits',
           platform: 'Web demo',
           summary:
             'Customers book from their phone and leave a deposit (the payment is simulated); the business sees the day’s schedule with no double bookings.',
@@ -497,34 +499,34 @@ export const content = {
           title: 'Building management portal',
           platform: 'Web demo',
           summary:
-            'Fees, building expenses and complaints with photos, with one view for owners and another for the administration.',
+            'Monthly fees, building expenses and maintenance requests with photos, with one view for owners and another for the building manager.',
         },
         {
           ...more.cotizador,
-          title: 'Quote builder with stock by date',
+          title: 'Rental quotes with date-based availability',
           platform: 'Web demo',
           summary:
-            'For furniture or equipment rental: it shows what is still free on each date and books with a deposit (the payment is simulated).',
+            'For furniture or equipment rental: it shows what’s still available on each date and takes the booking with a deposit (the payment is simulated).',
         },
         {
           ...more.sysvital,
           title: 'SysVital',
-          platform: 'Windows',
+          platform: 'Windows app',
           summary:
-            'PC diagnostics for technicians: it analyzes the machine, fixes the usual issues and tests camera, mic and ports before handover. Over 3,300 automated tests.',
+            'PC diagnostics for technicians: it scans the machine, fixes common issues and tests the webcam, mic and ports before the PC goes back to its owner. Backed by 3,300+ automated tests.',
         },
         {
           ...more.web2app,
           title: 'web2app',
           platform: 'Command line',
           summary:
-            'Turns a website into an Android app with native behavior: back navigation, offline screen and pull to refresh.',
+            'Turns a website into an Android app with native behavior: back button support, an offline screen and pull-to-refresh.',
         },
         {
           ...more.paneles,
           title: 'Twitch panels',
           platform: 'Command line',
-          summary: 'Generates a channel’s panels from a file with its texts, in three palettes, ready to upload.',
+          summary: 'Generates a channel’s panels from a single text file, in three color palettes, ready to upload.',
         },
       ],
     },
@@ -536,13 +538,13 @@ export const content = {
         {
           id: 'freelance',
           role: 'Freelance Web Developer',
-          org: 'My own clients',
+          org: 'Self-employed',
           period: 'Oct 2025 – Present',
           points: [
-            'Websites and systems for businesses, end to end: requirements, design, development, domain and deployment.',
+            'End-to-end websites and web apps for businesses: requirements, design, development, domain setup and deployment.',
             'Among others, the Novagraf website (catalog, spec sheets and quote requests) and the Marsela Rosso shop with 3D products.',
           ],
-          tech: ['React', 'TypeScript', 'Vite', 'Three.js'],
+          tech: ['React', 'Vite', 'React Three Fiber', 'JavaScript', 'HTML', 'CSS'],
         },
         {
           id: 'viupik',
@@ -564,10 +566,10 @@ export const content = {
           place: 'Buenos Aires',
           period: 'Jan 2024 – Nov 2025',
           points: [
-            'Sole developer for a wellness business: I built its website, the main channel it gets clients from.',
+            'Sole developer for a wellness business: I built its first website, in Next.js, which became its main source of new clients.',
             'Replaced manual scheduling with a WhatsApp bot in Node.js and MongoDB: it books appointments, sends reminders and takes admin commands.',
           ],
-          tech: ['Node.js', 'MongoDB', 'whatsapp-web.js'],
+          tech: ['Next.js', 'Node.js', 'MongoDB', 'whatsapp-web.js'],
         },
       ],
       education: [
@@ -584,14 +586,14 @@ export const content = {
           org: 'Digital House',
           period: '2025 – Present',
           description:
-            'Digital House’s full stack program with Mercado Libre and Globant. Completed Front End Developer, Automated Testing and Advanced Infrastructure.',
+            'In progress. Created with Mercado Libre and Globant; completed so far: Front End Developer, Automated Testing and Advanced Infrastructure.',
         },
         {
           id: 'coder',
           title: 'React Frontend Development Program',
           org: 'Coderhouse',
           period: '2024 – 2025',
-          description: 'Web development, JavaScript and React.',
+          description: 'Completed, certified January 2025. Web development, JavaScript and React.',
         },
         {
           id: 'anthropic',
@@ -605,9 +607,9 @@ export const content = {
     about: {
       title: 'About',
       paragraphs: [
-        'I like owning the whole path: understanding what the person needs, designing it, building it and leaving it running in production. At Viupik I did that inside a team, with code review and production releases; with my clients I do it end to end.',
-        'I use AI every day to develop, and I also build it into what I make: EloDiff and Despensa run on models from Anthropic and Google.',
-        'When I am not working, I play League of Legends and stream. That is where EloDiff, Ruleta Gamer and Twitch Clips AI came from: almost everything I build on my own starts with something I needed myself.',
+        'I like owning the whole process: figuring out what people need, designing it, building it and getting it live. At Viupik I did that as part of a team, with code review and production releases; with my clients, I handle everything myself, from the first conversation to launch.',
+        'I use AI every day when I code, and I also build it into my projects: EloDiff runs on the Claude API and Despensa on Gemini.',
+        'When I’m not working, I play League of Legends and stream. That’s where EloDiff, Ruleta Gamer and Twitch Clips AI came from: almost everything I build on my own starts with something I needed myself.',
       ],
       stackTitle: 'Stack',
       stack: [
@@ -625,7 +627,7 @@ export const content = {
     },
     contact: {
       title: 'Let’s talk.',
-      lead: 'If you have a role or a project in mind, reach me by email or WhatsApp.',
+      lead: 'If you’re hiring or have a project in mind, email me or message me on WhatsApp.',
       copy: 'Copy',
       copyLabel: 'Copy the email address',
       copied: 'Copied',

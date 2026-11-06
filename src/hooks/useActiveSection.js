@@ -9,21 +9,29 @@ export default function useActiveSection(secciones) {
     if (!('IntersectionObserver' in window)) return undefined;
     let observer = null;
     let espera = 0;
+    const enPantalla = new Set();
+
+    // Al fondo de la página manda la última sección: en pantallas altas Contacto es más bajo que
+    // la franja y nunca llegaría a cruzarla.
+    const actualizar = () => {
+      const alFondo = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      const actual = alFondo ? secciones[secciones.length - 1] : secciones.find((s) => enPantalla.has(s.id));
+      setActiva(actual ? actual.nav : null);
+    };
 
     // La franja va del 40 % al 45 % de la altura. Se pasa en píxeles (no en porcentaje) para no
     // depender de contra qué medida resuelve cada navegador los porcentajes de rootMargin.
     const crear = () => {
       if (observer) observer.disconnect();
       const alto = window.innerHeight;
-      const enPantalla = new Set();
+      enPantalla.clear();
       observer = new IntersectionObserver(
         (entradas) => {
           entradas.forEach((entrada) => {
             if (entrada.isIntersecting) enPantalla.add(entrada.target.id);
             else enPantalla.delete(entrada.target.id);
           });
-          const actual = secciones.find((s) => enPantalla.has(s.id));
-          setActiva(actual ? actual.nav : null);
+          actualizar();
         },
         { rootMargin: `${-Math.round(alto * 0.4)}px 0px ${-Math.round(alto * 0.55)}px 0px`, threshold: 0 }
       );
@@ -41,9 +49,11 @@ export default function useActiveSection(secciones) {
 
     crear();
     window.addEventListener('resize', alRedimensionar, { passive: true });
+    window.addEventListener('scroll', actualizar, { passive: true });
     return () => {
       clearTimeout(espera);
       window.removeEventListener('resize', alRedimensionar);
+      window.removeEventListener('scroll', actualizar);
       if (observer) observer.disconnect();
     };
   }, [secciones]);

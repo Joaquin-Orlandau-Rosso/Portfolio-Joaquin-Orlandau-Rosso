@@ -46,6 +46,8 @@
     text-decoration-color: var(--end-accent);
     text-decoration-thickness: 0.0625em;
     text-underline-offset: 0.22em;
+    // Más área para tocarlo sin mover nada (en un elemento en línea el relleno no empuja).
+    padding-block: 0.625rem;
     transition: color 0.2s ease;
 
     &:hover {
@@ -56,13 +58,16 @@
   .copy-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.4375rem;
-    min-height: 2.25rem;
+    // Ancho fijo mínimo: al pasar a "Copiado" el botón no salta.
+    min-width: 6.75rem;
+    min-height: 2.75rem;
     padding: 0 0.75rem;
     font-size: 0.875rem;
     font-weight: 600;
     color: var(--end-muted);
-    border: 1px solid var(--end-line);
+    border: 1px solid rgba(241, 235, 224, 0.22);
     border-radius: var(--radius);
     transition: color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
 

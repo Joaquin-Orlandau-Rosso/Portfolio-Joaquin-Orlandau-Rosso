@@ -74,6 +74,24 @@
     gap: 0.25rem;
   }
 
+  // Con los enlaces a la vista, grilla de tres columnas para que queden centrados de verdad
+  // (las acciones son más anchas que el nombre y con flex se corrían a la izquierda).
+  // Desde 1024: entre 880 y 1024 no sobra lugar para dos columnas iguales y sigue con flex.
+  @media (min-width: 64em) {
+    .navbar-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    }
+
+    .navbar-name {
+      justify-self: start;
+    }
+
+    .navbar-actions {
+      justify-self: end;
+    }
+  }
+
   .navbar-lang,
   .navbar-theme,
   .navbar-menu {
@@ -89,9 +107,12 @@
     border-radius: var(--radius);
     transition: color 0.2s ease, background-color 0.2s ease;
 
-    &:hover {
-      color: var(--ink);
-      background: var(--bg-2);
+    // Solo con mouse: en táctil el :hover queda pegado después de tocar.
+    @media (hover: hover) {
+      &:hover {
+        color: var(--ink);
+        background: var(--bg-3);
+      }
     }
 
     svg {
@@ -191,9 +212,21 @@
     }
   }
 
-  @media (max-width: 23.75em) {
-    .navbar-name {
-      font-size: 0.9375rem;
+  // Celulares: nombre + ES|EN + tema + Menú tienen que entrar con 20 px de margen y sin correr
+  // la página de costado (en 320 y 360 no entraban). Botones de 44 px para el dedo.
+  @media (max-width: 26em) {
+    .navbar-inner {
+      gap: 0.5rem;
+    }
+
+    .navbar-actions {
+      gap: 0.125rem;
+    }
+
+    .navbar-lang,
+    .navbar-theme,
+    .navbar-menu {
+      height: 2.75rem;
     }
 
     .navbar-lang {
@@ -201,8 +234,33 @@
     }
 
     .navbar-theme {
-      min-width: 2.25rem;
-      padding: 0 0.375rem;
+      min-width: 2.75rem;
+      padding: 0;
+    }
+
+    // "Menú" y "Cerrar" miden lo mismo: el botón no salta al abrir.
+    .navbar-menu {
+      min-width: 3.75rem;
+      margin-left: 0;
+      padding: 0 0.5rem;
+    }
+  }
+
+  // En los más angostos el nombre va en dos renglones: Joaquín / Orlandau Rosso.
+  @media (max-width: 24.5em) {
+    .navbar-name {
+      font-size: 0.9375rem;
+      line-height: 1.15;
+    }
+
+    .navbar-surname {
+      display: block;
+    }
+  }
+
+  @media (max-width: 21.25em) {
+    .navbar-name {
+      font-size: 0.875rem;
     }
   }
 

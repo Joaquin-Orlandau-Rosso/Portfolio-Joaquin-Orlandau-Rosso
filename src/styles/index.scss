@@ -59,8 +59,9 @@
   --frame-dot: #3d362c;
   --frame-url: #1b1712;
 
-  --end-bg: #1b1712;
-  --end-line: #2e2821;
+  // El cierre va más oscuro que el fondo (como en claro) para que se lea como bloque final.
+  --end-bg: #0c0a07;
+  --end-line: #2a241c;
 
   color-scheme: dark;
 }
@@ -81,7 +82,9 @@ html {
   // como todo está en rem, en un monitor grande el sitio no queda como una columna chiquita.
   font-size: clamp(100%, calc(67.9% + 0.357vw), 125%);
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-h) + 1rem);
+  // Al saltar desde el menú, la sección arranca justo debajo de la barra (sin franja de la
+  // sección anterior) y el título no queda a 130 px: ver el scroll-margin de .section.
+  scroll-padding-top: var(--nav-h);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -162,6 +165,10 @@ p {
 
 .section {
   padding-block: clamp(4rem, 8vw, 7.5rem);
+}
+
+.section[id] {
+  scroll-margin-top: calc(-1 * clamp(2rem, 4vw, 3.5rem));
 }
 
 // Cabecera de sección: título grande a la izquierda y una nota corta a la derecha.
@@ -314,6 +321,68 @@ p {
   &.is-visible {
     opacity: 1;
     transform: none;
+  }
+}
+
+// Texto solo para lectores de pantalla.
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// El salto "ir al contenido" enfoca <main>: sin contorno alrededor de toda la página.
+main:focus {
+  outline: none;
+}
+
+// Imprimir o "Guardar como PDF": todo visible, sin barra fija y en colores claros
+// (el navegador no imprime fondos, así que el cierre oscuro quedaría con texto claro en blanco).
+@media print {
+  .reveal,
+  .hero .entra,
+  .hero .palabra > span,
+  .capa {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .navbar,
+  .skip-link {
+    display: none;
+  }
+
+  :root,
+  .dark {
+    --bg: #fff;
+    --bg-2: #fff;
+    --bg-3: #f3eee4;
+    --ink: #16130e;
+    --ink-2: #403a31;
+    --muted: #655d52;
+    --line: #ddd5c6;
+    --accent: #a8431f;
+    --frame-bar: #e9e2d4;
+    --frame-dot: #cdc3b0;
+    --frame-url: #f6f1e8;
+    --end-bg: #fff;
+    --end-ink: #16130e;
+    --end-muted: #655d52;
+    --end-line: #ddd5c6;
+    --end-accent: #a8431f;
+  }
+
+  .section,
+  .client,
+  .case {
+    break-inside: avoid-page;
   }
 }
 

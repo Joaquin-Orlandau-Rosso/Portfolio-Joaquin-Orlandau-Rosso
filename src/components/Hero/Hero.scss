@@ -4,7 +4,10 @@
   position: relative;
   padding-top: clamp(2.5rem, 5vw, 4.5rem);
   padding-bottom: clamp(3.5rem, 7vw, 6.5rem);
-  overflow: clip; // las capas se corren con el scroll: que nada se asome fuera de la sección
+  // Las capas se corren con el scroll: que nada se asome fuera de la sección.
+  // hidden primero para Safari < 16, que no conoce clip.
+  overflow: hidden;
+  overflow: clip;
 
   .hero-grid {
     display: grid;
@@ -24,6 +27,17 @@
   &[data-listo] .entra {
     opacity: 1;
     transform: none;
+  }
+
+  // Bajada, texto y foto son los candidatos a "mayor pintado" (LCP). Chrome no cuenta lo que
+  // se pinta con opacidad 0 exacta y los medía recién al final del fundido: arrancan en 0.01,
+  // que a la vista es lo mismo.
+  &:not([data-listo]) {
+    .hero-tagline.entra,
+    .hero-lead.entra,
+    .capa-foto .entra {
+      opacity: 0.01;
+    }
   }
 
   // Máscara de cada palabra del título. El relleno evita que se corten los trazos
@@ -127,7 +141,7 @@
 
       &:hover {
         color: var(--ink);
-        background: var(--bg-2);
+        background: var(--bg-3);
       }
     }
 
@@ -242,6 +256,30 @@
     .hero-stage {
       justify-self: start;
       width: min(100%, 26rem);
+    }
+  }
+
+  // Tablet (768-959): en una columna la foto quedaba a la izquierda con ~300 px vacíos al lado.
+  @media (min-width: 48em) and (max-width: 59.99em) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      gap: 2rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.75rem, 6.2vw, 4rem);
+    }
+
+    .hero-stage {
+      justify-self: end;
+      width: 100%;
+    }
+  }
+
+  // Ahí GitHub y LinkedIn quedarían solos en otro renglón (ya están en Contacto).
+  @media (min-width: 48em) and (max-width: 55em) {
+    .hero-social {
+      display: none;
     }
   }
 

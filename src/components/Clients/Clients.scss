@@ -87,7 +87,7 @@
   .client-screen {
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background: #fff;
+    background: var(--bg-3);
 
     // Al soltar vuelve arriba rápido; al pasar el mouse baja despacio hasta el final de la página.
     img {
@@ -187,7 +187,8 @@
     }
   }
 
-  @media (max-width: 47.5em) {
+  // Una columna solo en celular: en tablet (576-760) las tarjetas quedaban gigantes.
+  @media (max-width: 35.99em) {
     .clients-grid {
       grid-template-columns: minmax(0, 1fr);
     }
@@ -195,7 +196,10 @@
     .client.reveal {
       transition-delay: 0ms;
     }
+  }
 
+  // Sin mouse no hay hover que muestre la flecha: va siempre a la vista.
+  @media (hover: none), (max-width: 35.99em) {
     .client-name svg {
       opacity: 1;
       transform: none;

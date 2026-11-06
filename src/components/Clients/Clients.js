@@ -26,12 +26,15 @@ const Tarjeta = ({ item, index, t }) => {
               <i />
               <i />
             </span>
-            <span className="client-url">{item.domain}</span>
+            <span className="client-url" aria-hidden="true">
+              {item.domain}
+            </span>
           </div>
           <div className="client-screen">
             <img
               src={item.image}
-              alt={t.clients.shotAlt(item.name)}
+              // El enlace ya se llama como el cliente: la captura no repite el nombre al lector.
+              alt=""
               width={item.size[0]}
               height={item.size[1]}
               loading="lazy"

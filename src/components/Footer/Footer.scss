@@ -18,6 +18,11 @@
     font-size: 0.875rem;
   }
 
+  // "Buenos Aires, Argentina" no se parte al medio.
+  .footer-place {
+    white-space: nowrap;
+  }
+
   .footer-links {
     display: flex;
     flex-wrap: wrap;
@@ -27,7 +32,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.3125rem;
-      min-height: 2rem;
+      min-height: 2.75rem;
       transition: color 0.2s ease;
 
       &:hover {

@@ -7,7 +7,7 @@ const Footer = ({ t }) => (
   <footer className="footer">
     <div className="container footer-inner">
       <p>
-        © {new Date().getFullYear()} {t.footer.rights} · {t.footer.location}
+        © {new Date().getFullYear()} {t.footer.rights} · <span className="footer-place">{t.footer.location}</span>
       </p>
       <p className="footer-links">
         <a href={links.repo} target="_blank" rel="noopener noreferrer">

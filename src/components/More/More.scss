@@ -97,7 +97,7 @@
     }
   }
 
-  @media (max-width: 64em) {
+  @media (max-width: 75em) {
     .more-row {
       grid-template-columns: minmax(0, 1fr) auto;
       grid-template-areas:
