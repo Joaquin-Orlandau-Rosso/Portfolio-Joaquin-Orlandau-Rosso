@@ -1,13 +1,24 @@
 import React from 'react';
+import { PiArrowUpBold, PiArrowUpRightBold } from 'react-icons/pi';
+import { links } from '../../content';
 import './Footer.scss';
 
 const Footer = ({ t }) => (
   <footer className="footer">
     <div className="container footer-inner">
-      <span>
-        © {new Date().getFullYear()} {t.footer.rights}
-      </span>
-      <span>{t.footer.location}</span>
+      <p>
+        © {new Date().getFullYear()} {t.footer.rights} · {t.footer.location}
+      </p>
+      <p className="footer-links">
+        <a href={links.repo} target="_blank" rel="noopener noreferrer">
+          {t.footer.source}
+          <PiArrowUpRightBold aria-hidden="true" />
+        </a>
+        <a href="#top">
+          {t.footer.top}
+          <PiArrowUpBold aria-hidden="true" />
+        </a>
+      </p>
     </div>
   </footer>
 );

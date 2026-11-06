@@ -1,10 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { FiMoon, FiSun } from 'react-icons/fi';
+import { PiMoon, PiSun } from 'react-icons/pi';
+import useActiveSection from '../../hooks/useActiveSection';
 import './Navbar.scss';
+
+// Secciones de la página, en orden. `nav` es el enlace del menú que se marca al pasar por ahí
+// (la lista de demos cuenta como parte de Proyectos).
+const SECCIONES = [
+  { id: 'clientes', nav: 'clientes' },
+  { id: 'proyectos', nav: 'proyectos' },
+  { id: 'mas-proyectos', nav: 'proyectos' },
+  { id: 'experiencia', nav: 'experiencia' },
+  { id: 'sobre-mi', nav: 'sobre-mi' },
+  { id: 'contacto', nav: 'contacto' },
+];
 
 const Navbar = ({ t, darkMode, toggleDarkMode, toggleLanguage }) => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const activa = useActiveSection(SECCIONES);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -22,32 +35,39 @@ const Navbar = ({ t, darkMode, toggleDarkMode, toggleLanguage }) => {
   }, [open]);
 
   const items = [
-    { label: t.nav.clients, href: '#clientes' },
-    { label: t.nav.work, href: '#trabajo' },
-    { label: t.nav.experience, href: '#experiencia' },
-    { label: t.nav.about, href: '#sobre-mi' },
-    { label: t.nav.contact, href: '#contacto' },
+    { id: 'clientes', label: t.nav.clients },
+    { id: 'proyectos', label: t.nav.work },
+    { id: 'experiencia', label: t.nav.experience },
+    { id: 'sobre-mi', label: t.nav.about },
   ];
+  const actual = (id) => (activa === id ? 'true' : undefined);
 
   return (
     <header className={`navbar ${scrolled ? 'is-scrolled' : ''} ${open ? 'is-open' : ''}`}>
       <div className="container navbar-inner">
-        <a href="#top" className="navbar-name">
+        <a href="#top" className="navbar-name" onClick={() => setOpen(false)}>
           Joaquín Orlandau Rosso
         </a>
 
-        <nav className="navbar-links" aria-label="Principal">
+        <nav className="navbar-links" aria-label={t.nav.label}>
           {items.map((item) => (
-            <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
+            <a key={item.id} href={`#${item.id}`} aria-current={actual(item.id)}>
               {item.label}
             </a>
           ))}
-          <span className="navbar-available">{t.nav.available}</span>
         </nav>
 
         <div className="navbar-actions">
-          <button type="button" className="navbar-lang" onClick={toggleLanguage} aria-label={t.nav.toggleLang}>
-            {t.lang === 'es' ? 'EN' : 'ES'}
+          <button
+            type="button"
+            className="navbar-lang"
+            onClick={toggleLanguage}
+            aria-label={t.nav.toggleLang}
+            lang={t.lang === 'es' ? 'en' : 'es'}
+          >
+            <span className={t.lang === 'es' ? 'is-on' : undefined}>ES</span>
+            <span className="navbar-lang-sep" aria-hidden="true" />
+            <span className={t.lang === 'en' ? 'is-on' : undefined}>EN</span>
           </button>
           <button
             type="button"
@@ -55,8 +75,11 @@ const Navbar = ({ t, darkMode, toggleDarkMode, toggleLanguage }) => {
             onClick={toggleDarkMode}
             aria-label={darkMode ? t.nav.toggleTheme.toLight : t.nav.toggleTheme.toDark}
           >
-            {darkMode ? <FiSun /> : <FiMoon />}
+            {darkMode ? <PiSun aria-hidden="true" /> : <PiMoon aria-hidden="true" />}
           </button>
+          <a href="#contacto" className="navbar-cta" aria-current={actual('contacto')}>
+            {t.nav.contact}
+          </a>
           <button
             type="button"
             className="navbar-menu"
@@ -69,12 +92,15 @@ const Navbar = ({ t, darkMode, toggleDarkMode, toggleLanguage }) => {
         </div>
       </div>
 
-      <nav id="mobile-nav" className="navbar-mobile" aria-label="Principal (móvil)" hidden={!open}>
+      <nav id="mobile-nav" className="navbar-mobile" aria-label={t.nav.label} hidden={!open}>
         {items.map((item) => (
-          <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
+          <a key={item.id} href={`#${item.id}`} aria-current={actual(item.id)} onClick={() => setOpen(false)}>
             {item.label}
           </a>
         ))}
+        <a href="#contacto" aria-current={actual('contacto')} onClick={() => setOpen(false)}>
+          {t.nav.contact}
+        </a>
       </nav>
     </header>
   );

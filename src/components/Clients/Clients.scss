@@ -1,25 +1,11 @@
-// Franja oscura de punta a punta con los sitios de clientes de a dos.
+// Sitios de clientes de a dos, sobre un tono apenas más oscuro que el fondo.
 .clients {
-  background: var(--band-bg);
-  color: var(--band-ink);
-  padding-bottom: clamp(56px, 7vw, 96px);
+  background: var(--bg-2);
 
-  .section-head {
-    border-top-color: var(--band-ink);
-
-    .eyebrow {
-      color: var(--band-ink);
-    }
-
-    .note {
-      color: var(--band-muted);
-    }
-  }
-
-  .clients-lead {
-    font-size: 14px;
-    color: var(--band-muted);
-    margin-bottom: clamp(28px, 4vw, 44px);
+  .clients-hint {
+    margin-top: 0.625rem;
+    font-size: 0.9375rem;
+    color: var(--muted);
   }
 
   .solo-tactil {
@@ -35,184 +21,197 @@
       display: inline;
     }
   }
-}
 
-.client-browser {
-  border-radius: 10px;
-  overflow: hidden;
-  background: var(--band-chrome);
-  border: 1px solid var(--band-line);
-  box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.7);
-}
-
-.client-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  height: 30px;
-  padding-inline: 12px;
-}
-
-.client-dots {
-  display: flex;
-  gap: 6px;
-
-  i {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--band-line);
-  }
-}
-
-.client-url {
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  padding: 3px 10px;
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.06);
-  font-size: 12px;
-  color: var(--band-muted);
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.client-screen {
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  background: #fff;
-
-  img {
-    width: 100%;
-    height: auto;
-    will-change: transform;
-  }
-}
-
-.clients-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(32px, 4vw, 56px) clamp(24px, 3vw, 40px);
-  list-style: none;
-}
-
-.client.reveal {
-  transition-delay: calc(var(--col) * 100ms);
-}
-
-.client-link {
-  display: block;
-  color: var(--band-ink);
-
-  &:hover,
-  &:focus-visible {
-    color: var(--band-ink);
-  }
-
-  &:focus-visible {
-    outline: none;
-
-    .client-browser {
-      outline: 2px solid var(--band-accent);
-      outline-offset: 4px;
-    }
-  }
-
-  .client-browser {
-    transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.5s ease;
-  }
-
-  // Al soltar vuelve arriba rápido; al pasar el mouse baja despacio hasta el final de la página.
-  .client-screen img {
-    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
-.client-line {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 18px;
-}
-
-.client-name {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-
-  svg {
-    width: 16px;
-    height: 16px;
-    color: var(--band-accent);
-    opacity: 0;
-    transform: translate(-4px, 4px);
-    transition: opacity 0.3s ease, transform 0.35s ease;
-  }
-}
-
-.client-year {
-  font-size: 14px;
-  font-variant-numeric: tabular-nums;
-  color: var(--band-muted);
-}
-
-.client-kind {
-  display: block;
-  margin-top: 2px;
-  font-size: 14px;
-  color: var(--band-muted);
-}
-
-@media (hover: hover) {
-  .client-link:hover {
-    .client-browser {
-      transform: translateY(-6px);
-      box-shadow: 0 30px 60px -28px rgba(0, 0, 0, 0.85);
-    }
-
-    .client-screen img {
-      transform: translateY(var(--recorrido));
-      transition: transform 7s cubic-bezier(0.45, 0.05, 0.35, 1);
-    }
-  }
-}
-
-.client-link:hover,
-.client-link:focus-visible {
-  .client-name svg {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@media (max-width: 760px) {
   .clients-grid {
-    grid-template-columns: minmax(0, 1fr);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(2.25rem, 4vw, 3.5rem) clamp(1.5rem, 3vw, 2.5rem);
   }
 
-  .client.reveal {
-    transition-delay: 0ms;
+  .client-link {
+    display: block;
+
+    &:focus-visible {
+      outline: none;
+
+      .client-browser {
+        outline: 2px solid var(--accent);
+        outline-offset: 4px;
+      }
+    }
   }
 
-  .client-name svg {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .client-link .client-browser,
-  .client-link .client-screen img,
-  .client-name svg {
-    transition: none;
+  // Marco de navegador: barra con tres puntos y la dirección, y la captura debajo.
+  .client-browser {
+    overflow: hidden;
+    border-radius: 0.75rem;
+    background: var(--frame-bar);
+    box-shadow: 0 0 0 1px var(--line), 0 1.75rem 3rem -2rem rgba(var(--shadow), 0.45);
+    transition: transform 0.5s var(--ease);
   }
 
-  .client-link:hover .client-screen img {
-    transform: none;
+  .client-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    height: 2rem;
+    padding-inline: 0.75rem;
+  }
+
+  .client-dots {
+    display: flex;
+    gap: 0.375rem;
+
+    i {
+      width: 0.5625rem;
+      height: 0.5625rem;
+      border-radius: 50%;
+      background: var(--frame-dot);
+    }
+  }
+
+  .client-url {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    padding: 0.1875rem 0.625rem;
+    border-radius: 0.3125rem;
+    background: var(--frame-url);
+    font-size: 0.75rem;
+    line-height: 1.3;
+    color: var(--muted);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .client-screen {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #fff;
+
+    // Al soltar vuelve arriba rápido; al pasar el mouse baja despacio hasta el final de la página.
+    img {
+      width: 100%;
+      height: auto;
+      transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+
+  .client-line {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.125rem;
+  }
+
+  .client-name {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 1.3125rem;
+    letter-spacing: -0.025em;
+    transition: color 0.2s ease;
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      color: var(--accent);
+      opacity: 0;
+      transform: translate(-0.25rem, 0.25rem);
+      transition: opacity 0.3s ease, transform 0.35s var(--ease);
+    }
+  }
+
+  .client-year {
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+  }
+
+  .client-kind {
+    margin-top: 0.125rem;
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+
+  .client-did {
+    max-width: 34rem;
+    margin-top: 0.625rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  .tech-list {
+    margin-top: 0.5rem;
+  }
+
+  @media (hover: hover) {
+    .client-link:hover {
+      .client-browser {
+        transform: translateY(-0.375rem);
+      }
+
+      .client-screen img {
+        transform: translateY(var(--recorrido));
+        transition: transform 7s cubic-bezier(0.45, 0.05, 0.35, 1);
+      }
+    }
+  }
+
+  .client-link:hover,
+  .client-link:focus-visible {
+    .client-name svg {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  // Invitación a pedir presupuesto, para quien llega buscando un sitio para su negocio.
+  .clients-ask {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    padding-top: clamp(1.5rem, 3vw, 2rem);
+    border-top: 1px solid var(--line);
+
+    p {
+      font-size: clamp(1.125rem, 0.95rem + 0.7vw, 1.375rem);
+      font-weight: 550;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+  }
+
+  @media (max-width: 47.5em) {
+    .clients-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .client.reveal {
+      transition-delay: 0ms;
+    }
+
+    .client-name svg {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .client-browser,
+    .client-screen img,
+    .client-name svg {
+      transition: none;
+    }
+
+    .client-link:hover .client-browser,
+    .client-link:hover .client-screen img {
+      transform: none;
+    }
   }
 }

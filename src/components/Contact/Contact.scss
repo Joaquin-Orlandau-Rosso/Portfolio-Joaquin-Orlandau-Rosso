@@ -1,103 +1,141 @@
+// Cierre de la página: contacto sobre tinta (en modo oscuro, un tono apenas más claro que el fondo).
 .contact {
-  border-top: 1px solid var(--line);
+  padding-block: clamp(4.5rem, 9vw, 8.5rem) clamp(3.5rem, 6vw, 5.5rem);
+  background: var(--end-bg);
+  color: var(--end-ink);
 
-  .contact-grid {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 40px;
+  :focus-visible {
+    outline-color: var(--end-accent);
+  }
+
+  ::selection {
+    background: rgba(232, 135, 107, 0.35);
   }
 
   .contact-title {
-    font-size: clamp(28px, 3.4vw, 40px);
-    margin-bottom: 12px;
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    font-size: clamp(3.25rem, 1.8rem + 6.4vw, 7rem);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 0.95;
   }
 
   .contact-lead {
-    font-size: 16px;
-    color: var(--muted);
-    margin-bottom: 28px;
+    max-width: 32rem;
+    margin-bottom: clamp(2.25rem, 4.5vw, 3.5rem);
+    font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--end-muted);
   }
 
-  .contact-lines {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 16px;
-  }
-
-  .contact-line {
+  .contact-mail {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 12px;
+    gap: 0.875rem 1.25rem;
+    margin-bottom: clamp(2.25rem, 4.5vw, 3.5rem);
   }
 
   .contact-email {
+    font-size: clamp(1.125rem, 0.6rem + 2.6vw, 2.375rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
     overflow-wrap: anywhere;
+    text-decoration: underline;
+    text-decoration-color: var(--end-accent);
+    text-decoration-thickness: 0.0625em;
+    text-underline-offset: 0.22em;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--end-accent);
+    }
   }
 
   .copy-btn {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 4px 10px;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--muted);
-    border: 1px solid var(--line);
+    gap: 0.4375rem;
+    min-height: 2.25rem;
+    padding: 0 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--end-muted);
+    border: 1px solid var(--end-line);
     border-radius: var(--radius);
-    transition: color 0.2s ease, border-color 0.2s ease;
+    transition: color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
 
     &:hover {
-      color: var(--ink);
-      border-color: var(--ink);
+      color: var(--end-ink);
+      border-color: var(--end-muted);
+    }
+
+    &:active {
+      transform: scale(0.97);
     }
 
     &.is-copied {
-      color: var(--ok);
-      border-color: var(--ok);
+      color: #7fd3a0;
+      border-color: #7fd3a0;
     }
 
     svg {
-      width: 13px;
-      height: 13px;
+      width: 1rem;
+      height: 1rem;
     }
   }
 
-  .contact-social {
+  .contact-links {
     display: flex;
-    gap: 6px;
-    list-style: none;
+    flex-wrap: wrap;
+    gap: 0.25rem clamp(1.5rem, 3.5vw, 3rem);
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--end-line);
 
     a {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      color: var(--accent);
-      border: 1px solid transparent;
-      border-radius: var(--radius);
-      transition: border-color 0.2s ease, color 0.2s ease;
+      gap: 0.5rem;
+      min-height: 2.75rem;
+      font-size: 1rem;
+      font-weight: 550;
+      transition: color 0.2s ease;
 
       &:hover {
-        color: var(--accent-hover);
-        border-color: var(--line);
-      }
+        color: var(--end-accent);
 
-      svg {
-        width: 20px;
-        height: 20px;
+        .contact-arrow {
+          transform: translate(0.125rem, -0.125rem);
+        }
       }
+    }
+
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .contact-arrow {
+      width: 0.875rem;
+      height: 0.875rem;
+      margin-left: -0.125rem;
+      color: var(--end-muted);
+      transition: transform 0.3s var(--ease);
     }
   }
 
-  @media (max-width: 720px) {
-    .contact-grid {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 28px;
+  .contact-detail {
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    color: var(--end-muted);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-arrow,
+    .copy-btn {
+      transition: none;
     }
   }
 }

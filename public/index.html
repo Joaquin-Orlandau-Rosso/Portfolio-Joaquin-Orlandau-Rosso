@@ -2,43 +2,108 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#FAF7F1" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#14110D" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#FAF7F1" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      // Tema antes del primer pintado: sin esto, quien usa modo oscuro ve un destello claro.
+      (function () {
+        var guardado = null;
+        try {
+          guardado = localStorage.getItem('theme');
+        } catch (e) {
+          // almacenamiento bloqueado: se sigue con la preferencia del sistema
+        }
+        try {
+          var oscuro =
+            guardado === 'dark' ||
+            (guardado !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (oscuro) {
+            document.documentElement.classList.add('dark');
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#14110D');
+          }
+        } catch (e) {}
+      })();
+    </script>
 
-    <title>Joaquín Orlandau Rosso · Desarrollador Full Stack</title>
+    <title>Joaquín Orlandau Rosso – Desarrollador Full Stack</title>
     <meta
       name="description"
-      content="Desarrollador full stack en Buenos Aires. Experiencia en Viupik (España) con React, Node.js y MongoDB; productos propios con Supabase, Capacitor y Gemini."
+      content="Desarrollador full stack en Buenos Aires: webs y apps con React, Next.js, Node.js y TypeScript. Experiencia en Viupik (España), sitios para clientes y productos propios."
     />
     <meta name="author" content="Joaquín Orlandau Rosso" />
     <link rel="canonical" href="https://portfolio-joaquin-orlandau-rosso.vercel.app/" />
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Joaquín Orlandau Rosso" />
     <meta property="og:url" content="https://portfolio-joaquin-orlandau-rosso.vercel.app/" />
-    <meta property="og:title" content="Joaquín Orlandau Rosso · Desarrollador Full Stack" />
-    <meta property="og:description" content="Desarrollador full stack en Buenos Aires. Proyectos propios y para clientes con React, Node.js y Supabase." />
-    <meta property="og:image" content="https://portfolio-joaquin-orlandau-rosso.vercel.app/imgs/joaquin.jpg" />
+    <meta property="og:title" content="Joaquín Orlandau Rosso – Desarrollador Full Stack" />
+    <meta
+      property="og:description"
+      content="Webs y apps de punta a punta con React, Next.js, Node.js y TypeScript. Sitios para clientes y productos propios."
+    />
+    <meta property="og:image" content="https://portfolio-joaquin-orlandau-rosso.vercel.app/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Joaquín Orlandau Rosso, Full Stack Developer" />
     <meta property="og:locale" content="es_AR" />
     <meta property="og:locale:alternate" content="en_US" />
 
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Joaquín Orlandau Rosso · Desarrollador Full Stack" />
-    <meta name="twitter:description" content="Desarrollador full stack en Buenos Aires. Proyectos propios y para clientes con React, Node.js y Supabase." />
-    <meta name="twitter:image" content="https://portfolio-joaquin-orlandau-rosso.vercel.app/imgs/joaquin.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Joaquín Orlandau Rosso – Desarrollador Full Stack" />
+    <meta
+      name="twitter:description"
+      content="Webs y apps de punta a punta con React, Next.js, Node.js y TypeScript. Sitios para clientes y productos propios."
+    />
+    <meta name="twitter:image" content="https://portfolio-joaquin-orlandau-rosso.vercel.app/og.jpg" />
 
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon.svg" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..800&display=swap"
       rel="stylesheet"
     />
+    <!-- La foto del hero es lo primero grande que se ve: se pide antes de que arranque React. -->
+    <link rel="preload" as="image" href="%PUBLIC_URL%/imgs/joaquin.jpg" fetchpriority="high" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Joaquín Orlandau Rosso",
+        "jobTitle": "Full Stack Developer",
+        "url": "https://portfolio-joaquin-orlandau-rosso.vercel.app/",
+        "image": "https://portfolio-joaquin-orlandau-rosso.vercel.app/imgs/joaquin.jpg",
+        "address": { "@type": "PostalAddress", "addressLocality": "Buenos Aires", "addressCountry": "AR" },
+        "sameAs": [
+          "https://github.com/Joaquin-Orlandau-Rosso",
+          "https://www.linkedin.com/in/joaquin-orlandau-rosso/"
+        ],
+        "knowsAbout": ["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL", "MongoDB", "Supabase"],
+        "knowsLanguage": ["es", "en"]
+      }
+    </script>
   </head>
   <body>
-    <noscript>Este sitio necesita JavaScript. / This site requires JavaScript.</noscript>
+    <noscript>
+      <div style="max-width: 40rem; margin: 3rem auto; padding: 0 1.25rem; font: 1rem/1.6 system-ui, sans-serif">
+        <h1>Joaquín Orlandau Rosso</h1>
+        <p>Desarrollador full stack en Buenos Aires · Full stack developer in Buenos Aires.</p>
+        <p>
+          Este sitio necesita JavaScript para mostrarse completo. / This site needs JavaScript to show everything.
+        </p>
+        <p>
+          <a href="mailto:joaquin.orlandau.rosso@gmail.com">joaquin.orlandau.rosso@gmail.com</a> ·
+          <a href="https://www.linkedin.com/in/joaquin-orlandau-rosso/">LinkedIn</a> ·
+          <a href="https://github.com/Joaquin-Orlandau-Rosso">GitHub</a> ·
+          <a href="/cv/Joaquin-Orlandau-Rosso-CV.pdf">CV (PDF)</a>
+        </p>
+      </div>
+    </noscript>
     <div id="root"></div>
   </body>
 </html>

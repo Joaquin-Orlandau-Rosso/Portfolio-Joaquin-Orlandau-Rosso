@@ -2,36 +2,55 @@ import React from 'react';
 import useReveal from '../../hooks/useReveal';
 import './Experience.scss';
 
-const Entry = ({ period, heading, org, place, description, tech }) => {
+const Trabajo = ({ job }) => {
   const ref = useReveal();
 
   return (
     <li ref={ref} className="exp-entry reveal">
-      <span className="exp-period">{period}</span>
-      <div className="exp-body">
-        <h4 className="display exp-heading">{heading}</h4>
-        <p className="exp-org">
-          {org}
-          {place && <span className="exp-place"> · {place}</span>}
-        </p>
-        <p className="exp-description">{description}</p>
-        {tech && (
-          <div className="tech-list">
-            {tech.map((item) => (
-              <span key={item}>{item}</span>
-            ))}
-          </div>
-        )}
+      <div className="exp-top">
+        <h4 className="exp-heading">{job.role}</h4>
+        <p className="exp-period">{job.period}</p>
       </div>
+      <p className="exp-org">
+        {job.org}
+        {job.place && <span className="exp-place"> · {job.place}</span>}
+      </p>
+      <ul className="exp-points">
+        {job.points.map((punto) => (
+          <li key={punto.slice(0, 32)}>{punto}</li>
+        ))}
+      </ul>
+      <ul className="tech-list">
+        {job.tech.map((tech) => (
+          <li key={tech}>{tech}</li>
+        ))}
+      </ul>
+    </li>
+  );
+};
+
+const Estudio = ({ item }) => {
+  const ref = useReveal();
+
+  return (
+    <li ref={ref} className="exp-entry reveal">
+      <div className="exp-top">
+        <h4 className="exp-heading">{item.title}</h4>
+        <p className="exp-period">{item.period}</p>
+      </div>
+      <p className="exp-org">{item.org}</p>
+      <p className="exp-description">{item.description}</p>
     </li>
   );
 };
 
 const Experience = ({ t }) => (
-  <section id="experiencia" className="experience section">
+  <section id="experiencia" className="experience section" aria-labelledby="experiencia-titulo">
     <div className="container">
       <div className="section-head">
-        <h2 className="eyebrow">{t.experience.eyebrow}</h2>
+        <h2 id="experiencia-titulo" className="section-title">
+          {t.experience.title}
+        </h2>
       </div>
 
       <div className="exp-columns">
@@ -39,15 +58,7 @@ const Experience = ({ t }) => (
           <h3 className="exp-group-title">{t.experience.workTitle}</h3>
           <ul>
             {t.experience.jobs.map((job) => (
-              <Entry
-                key={job.org + job.period}
-                period={job.period}
-                heading={job.role}
-                org={job.org}
-                place={job.place}
-                description={job.description}
-                tech={job.tech}
-              />
+              <Trabajo key={job.id} job={job} />
             ))}
           </ul>
         </div>
@@ -56,13 +67,7 @@ const Experience = ({ t }) => (
           <h3 className="exp-group-title">{t.experience.educationTitle}</h3>
           <ul>
             {t.experience.education.map((item) => (
-              <Entry
-                key={item.org + item.period}
-                period={item.period}
-                heading={item.title}
-                org={item.org}
-                description={item.description}
-              />
+              <Estudio key={item.id} item={item} />
             ))}
           </ul>
         </div>

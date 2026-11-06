@@ -1,13 +1,43 @@
+// El pie sigue el bloque de cierre (mismo fondo que contacto).
 .footer {
-  border-top: 1px solid var(--line);
+  background: var(--end-bg);
+  color: var(--end-muted);
+  border-top: 1px solid var(--end-line);
+
+  :focus-visible {
+    outline-color: var(--end-accent);
+  }
 
   .footer-inner {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
-    gap: 8px 24px;
-    padding-block: 24px;
-    font-size: 13px;
-    color: var(--muted);
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 2rem;
+    padding-block: 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.75rem;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3125rem;
+      min-height: 2rem;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: var(--end-ink);
+      }
+    }
+
+    svg {
+      width: 0.8125rem;
+      height: 0.8125rem;
+    }
   }
 }

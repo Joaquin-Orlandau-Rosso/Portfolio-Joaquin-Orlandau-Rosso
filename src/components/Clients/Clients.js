@@ -1,16 +1,17 @@
 import React from 'react';
-import { FiArrowUpRight } from 'react-icons/fi';
+import { PiArrowUpRightBold, PiWhatsappLogo } from 'react-icons/pi';
+import { links } from '../../content';
 import useReveal from '../../hooks/useReveal';
 import './Clients.scss';
 
 // La pantalla del navegador es 16:10: lo que sobra de la captura es lo que sube al pasar el mouse.
 const recorrido = ([ancho, alto]) => `${-(1 - (ancho * 10) / 16 / alto) * 100}%`;
 
-const Tarjeta = ({ item, index }) => {
+const Tarjeta = ({ item, index, t }) => {
   const ref = useReveal();
 
   return (
-    <li ref={ref} className="client reveal" style={{ '--col': index % 2 }}>
+    <li ref={ref} className="client reveal" style={{ '--d': index % 2 }}>
       <a
         className="client-link"
         href={item.url}
@@ -28,43 +29,75 @@ const Tarjeta = ({ item, index }) => {
             <span className="client-url">{item.domain}</span>
           </div>
           <div className="client-screen">
-            <img src={item.image} alt="" width={item.size[0]} height={item.size[1]} loading="lazy" decoding="async" />
+            <img
+              src={item.image}
+              alt={t.clients.shotAlt(item.name)}
+              width={item.size[0]}
+              height={item.size[1]}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
-        <span className="client-line">
-          <span className="client-name">
-            {item.name} <FiArrowUpRight aria-hidden="true" />
-          </span>
+        <div className="client-line">
+          <h3 className="client-name">
+            {item.name} <PiArrowUpRightBold aria-hidden="true" />
+          </h3>
           <span className="client-year">{item.year}</span>
-        </span>
-        <span className="client-kind">{item.kind}</span>
+        </div>
       </a>
+      <p className="client-kind">{item.kind}</p>
+      <p className="client-did">{item.did}</p>
+      <ul className="tech-list">
+        {item.tech.map((tech) => (
+          <li key={tech}>{tech}</li>
+        ))}
+      </ul>
     </li>
   );
 };
 
 // Sitios de clientes de a dos, todos a la vista. Al pasar el mouse la página se recorre dentro del marco.
-const Clients = ({ t }) => (
-  <section id="clientes" className="clients section" aria-labelledby="clientes-titulo">
-    <div className="container">
-      <div className="section-head">
-        <h2 id="clientes-titulo" className="eyebrow">
-          {t.clients.eyebrow}
-        </h2>
-        <p className="note">{t.clients.note}</p>
-      </div>
-      <p className="clients-lead">
-        <span className="solo-mouse">{t.clients.lead}</span>
-        <span className="solo-tactil">{t.clients.leadTouch}</span>
-      </p>
+const Clients = ({ t }) => {
+  const refAsk = useReveal();
 
-      <ul className="clients-grid">
-        {t.clients.items.map((item, i) => (
-          <Tarjeta key={item.domain} item={item} index={i} />
-        ))}
-      </ul>
-    </div>
-  </section>
-);
+  return (
+    <section id="clientes" className="clients section" aria-labelledby="clientes-titulo">
+      <div className="container">
+        <div className="section-head">
+          <div>
+            <h2 id="clientes-titulo" className="section-title">
+              {t.clients.title}
+            </h2>
+            <p className="clients-hint">
+              <span className="solo-mouse">{t.clients.lead}</span>
+              <span className="solo-tactil">{t.clients.leadTouch}</span>
+            </p>
+          </div>
+          <p className="section-note">{t.clients.note}</p>
+        </div>
+
+        <ul className="clients-grid">
+          {t.clients.items.map((item, i) => (
+            <Tarjeta key={item.id} item={item} index={i} t={t} />
+          ))}
+        </ul>
+
+        <div ref={refAsk} className="clients-ask reveal">
+          <p>{t.clients.ask}</p>
+          <a
+            className="btn btn-secondary"
+            href={links.whatsappText(t.clients.askMessage)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <PiWhatsappLogo aria-hidden="true" />
+            {t.clients.askCta}
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default Clients;

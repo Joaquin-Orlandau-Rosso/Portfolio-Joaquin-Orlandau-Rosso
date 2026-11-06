@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 // Agrega `is-visible` al elemento cuando entra en pantalla (una sola vez).
 // Se usa junto con la clase `.reveal` de index.scss.
-export default function useReveal(threshold = 0.15) {
+export default function useReveal() {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -14,21 +14,20 @@ export default function useReveal(threshold = 0.15) {
       return undefined;
     }
 
+    // Sin umbral: alcanza con que asome (un bloque más alto que la pantalla nunca llegaría a un porcentaje).
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            el.classList.add('is-visible');
-            observer.disconnect();
-          }
-        });
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add('is-visible');
+          observer.disconnect();
+        }
       },
-      { threshold }
+      { rootMargin: '0px 0px -8% 0px', threshold: 0 }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [threshold]);
+  }, []);
 
   return ref;
 }
